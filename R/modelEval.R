@@ -1,5 +1,14 @@
 
 
+#' model_eval
+#'
+#' @param obs_values observed values
+#' @param pred_values predicted values
+#'
+#' @return list with the main statistics
+#' @export
+#'
+#' @examples
 model_eval <- function(obs_values, pred_values) {
 
   if(is.character(obs_values) | is.character(pred_values)){
