@@ -1,0 +1,17 @@
+Package: modEval
+Title: Performs Model Evaluation
+Version: 0.0.0.9000
+Authors@R: 
+    person("Tadeu", "Silva", , "tdasilva2@wisc.edu", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-8676-5888"))
+Description: Performs model evaluation.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
+Imports: 
+    glue,
+    magrittr,
+    readxl,
+    shiny,
+    tibble
