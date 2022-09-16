@@ -74,12 +74,6 @@ server <- function(input, output) {
 
   output$grafico <- shiny::renderPlot({
 
-    # graphics::plot(contents3()[[2]], contents3()[[1]],
-    #      xlab = "Predicted values",
-    #      ylab = "Observed values",
-    #      main = "Predicted vs Observed")
-    # graphics::abline(a = 0, b = 1, col = "blue")
-
     df_cont <- contents3() |>
       tibble::as_tibble()
 
@@ -114,11 +108,6 @@ server <- function(input, output) {
                                              "Regression Line for Residuals" = "black")
       ) +
       ggplot2::theme(legend.position = "bottom")
-
-
-
-
-
 
 
   })
