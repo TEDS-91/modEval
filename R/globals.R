@@ -2,6 +2,9 @@
 utils::globalVariables(
   c(
     "models",
-    "residuals"
+    "residuals",
+    "observed",
+    "predicted",
+    "CCC"
   )
 )

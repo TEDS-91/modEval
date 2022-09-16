@@ -47,27 +47,52 @@ server <- function(input, output) {
 
   output$contents2 <- shiny::renderTable({
 
-    observed <- contents3()[[1]]
+    df_cont <- contents3() |>
+      tibble::as_tibble()
 
-    predicted <- contents3()[[2]]
+    df_splited <- df_cont |>
+      tidyr::pivot_longer(
+        cols = -1,
+        names_to = "models",
+        values_to = "predicted"
+      ) |>
+      dplyr::mutate(
+        residuals = observed - predicted
+      ) |>
+      dplyr::arrange(models) |>
+      dplyr::select(-residuals) |>
+      dplyr::relocate(models, .before = observed) |>
+      dplyr::group_split(models)
 
-    teste <- model_eval(obs_values  = contents3()[[1]],
-                        pred_values = contents3()[[2]])
+    model_names <- df_cont |>
+      tidyr::pivot_longer(
+        cols = -1,
+        names_to = "models",
+        values_to = "predicted"
+      ) |>
+      dplyr::mutate(
+        residuals = observed - predicted
+      ) |>
+      dplyr::arrange(models) |>
+      dplyr::pull(models) |>
+      unique()
 
-    tibble::tibble(
+    model_metrics <- vector("list", length(model_names))
 
-      "Intercept"   = teste$intercept,
-      "slope"       = teste$slope,
-      "R-Squared"   = teste$r_squared,
-      "Correlation" = teste$correlation,
-      "CCC"         = teste$ccc,
-      "MAE"         = teste$mae,
-      "MSE"         = teste$mse,
-      "RMSE"        = teste$rmse,
-      "Mean Bias"   = teste$mean_bias
+    for ( i in 1:length(model_names)) {
+
+      model_metrics[[i]] <- model_eval(df_splited[[i]]$observed, df_splited[[i]]$predicted)
+
+    }
+
+    model_metrics |>
+      purrr::set_names(model_names) |>
+      purrr::map_df(~ as.data.frame(.x), .id = "models") |>
+      tibble::as_tibble() |>
+      dplyr::arrange(-CCC)
 
 
-    )
+
 
 
   })

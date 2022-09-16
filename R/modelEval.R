@@ -54,16 +54,16 @@ model_eval <- function(obs_values, pred_values) {
     r_squared <- stats::cor(obs_values, pred_values)^2
 
     return(
-      list(
-        "intercept"   = intercept,
-        "slope"       = slope,
-        "r_squared"   = r_squared,
-        "correlation" = correlation,
-        "mean_bias"   = mean_bias,
-        "mae"         = mae,
-        "mse"         = mse,
-        "rmse"        = rmse,
-        "ccc"         = ccc
+      tibble::tibble(
+        "Intercept"   = intercept,
+        "Slope"       = slope,
+        "R-squared"   = r_squared,
+        "Peason Correlation" = correlation,
+        "Mean Bias"   = mean_bias,
+        "MAE"         = mae,
+        "MSE"         = mse,
+        "RMSE"        = rmse,
+        "CCC"         = ccc
       )
 
     )
