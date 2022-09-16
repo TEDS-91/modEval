@@ -10,10 +10,13 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
 Imports: 
+    dplyr,
+    ggplot2,
     glue,
     magrittr,
     readxl,
     shiny,
-    tibble
+    tibble,
+    tidyr
 URL: https://github.com/TEDS-91/modEval
 BugReports: https://github.com/TEDS-91/modEval/issues

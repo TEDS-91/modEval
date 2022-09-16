@@ -7,9 +7,9 @@
 model_eval(obs_values, pred_values)
 }
 \arguments{
-\item{obs_values}{observed values}
+\item{obs_values}{observed values.}
 
-\item{pred_values}{predicted values}
+\item{pred_values}{predicted values.}
 }
 \value{
 list with the main statistics

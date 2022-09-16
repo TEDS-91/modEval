@@ -1,4 +1,7 @@
 
 utils::globalVariables(
-  c()
+  c(
+    "models",
+    "residuals"
+  )
 )
