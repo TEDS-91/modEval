@@ -2,10 +2,14 @@
 % Please edit documentation in R/run_modelEvalUI.R
 \name{run_modelEvalUI}
 \alias{run_modelEvalUI}
-\title{Title}
+\title{Graphical Interface for Model Evaluation}
 \usage{
 run_modelEvalUI()
 }
+\value{
+graphical interface where the user can upload a .XLSX file to perform
+the model evaluation
+}
 \description{
-Title
+Graphical Interface for Model Evaluation
 }

@@ -2,8 +2,8 @@
 
 #' model_eval
 #'
-#' @param obs_values observed values
-#' @param pred_values predicted values
+#' @param obs_values observed values.
+#' @param pred_values predicted values.
 #'
 #' @return list with the main statistics
 #' @export

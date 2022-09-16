@@ -1,8 +1,8 @@
 
-
-#' Title
+#' Graphical Interface for Model Evaluation
 #'
-#' @return
+#' @return graphical interface where the user can upload a .XLSX file to perform
+#' the model evaluation
 #' @export
 #'
 #' @examples
@@ -40,7 +40,8 @@ server <- function(input, output) {
 
   output$contents <- shiny::renderTable({
 
-    contents3()
+    contents3() |>
+      tibble::as_tibble()
 
   })
 
@@ -73,11 +74,52 @@ server <- function(input, output) {
 
   output$grafico <- shiny::renderPlot({
 
-    graphics::plot(contents3()[[2]], contents3()[[1]],
-         xlab = "Predicted values",
-         ylab = "Observed values",
-         main = "Predicted vs Observed")
-    graphics::abline(a = 0, b = 1, col = "blue")
+    # graphics::plot(contents3()[[2]], contents3()[[1]],
+    #      xlab = "Predicted values",
+    #      ylab = "Observed values",
+    #      main = "Predicted vs Observed")
+    # graphics::abline(a = 0, b = 1, col = "blue")
+
+    df_cont <- contents3() |>
+      tibble::as_tibble()
+
+    df_cont |>
+      tidyr::pivot_longer(
+        cols = -1,
+        names_to = "models",
+        values_to = "predicted"
+      ) |>
+      dplyr::mutate(
+        residuals = observed - predicted
+      ) |>
+      dplyr::arrange(models) |>
+      dplyr::relocate(models, .before = observed) |>
+      ggplot2::ggplot() +
+      ggplot2::theme_bw() +
+      ggplot2::geom_point(ggplot2::aes(x = predicted, y = observed, color = "Observed")) +
+      ggplot2::geom_abline(slope = 1, intercept = 0, color = "blue") +
+      ggplot2::geom_point(ggplot2::aes(x = predicted, y = residuals, color = "Residuals")) +
+      ggplot2::geom_abline(slope = 0, intercept = 0, color = "black") +
+      ggplot2::facet_wrap(~ models) +
+      ggplot2::xlab("Predicted Values") +
+      ggplot2::ylab("Observed Values") +
+      ggplot2::scale_color_manual(name   = " ",
+                                  breaks = c("Observed",
+                                             "Regression Line (a + bx)",
+                                             "Residuals",
+                                             "Regression Line for Residuals"),
+                                  values = c("Observed"        = "black",
+                                             "Regression Line (a + bx)" = "blue",
+                                             "Residuals"       = "red",
+                                             "Regression Line for Residuals" = "black")
+      ) +
+      ggplot2::theme(legend.position = "bottom")
+
+
+
+
+
+
 
   })
 
