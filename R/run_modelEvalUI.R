@@ -87,7 +87,7 @@ server <- function(input, output) {
 
     model_metrics |>
       purrr::set_names(model_names) |>
-      purrr::map_df(~ as.data.frame(.x), .id = "models") |>
+      purrr::map_df(~ as.data.frame(.x), .id = "Models") |>
       tibble::as_tibble() |>
       dplyr::arrange(-CCC)
 
