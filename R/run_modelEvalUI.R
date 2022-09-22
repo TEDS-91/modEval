@@ -15,8 +15,10 @@ ui <- shiny::fluidPage(
       shiny::checkboxInput("header", "Header", TRUE)
     ),
     shiny::mainPanel(
+
       shiny::tableOutput("contents"),
-      shiny::tableOutput("contents2"),
+      DT::dataTableOutput("contents2"),
+      #shiny::tableOutput("contents2"),
       shiny::plotOutput("grafico_res"),
       shiny::plotOutput("grafico"),
       shiny::textOutput("shapiro_test")
@@ -45,7 +47,7 @@ server <- function(input, output) {
 
   })
 
-  output$contents2 <- shiny::renderTable({
+  output$contents2 <- DT::renderDataTable({
 
     df_cont <- contents3() |>
       tibble::as_tibble()
@@ -85,11 +87,21 @@ server <- function(input, output) {
 
     }
 
-    model_metrics |>
+    teste <- model_metrics |>
       purrr::set_names(model_names) |>
       purrr::map_df(~ as.data.frame(.x), .id = "Models") |>
       tibble::as_tibble() |>
       dplyr::arrange(-CCC)
+
+    DT::datatable(
+      teste, extensions = c('Buttons', 'Scroller'), options = list(
+        dom = 'Bfrtip',
+        deferRender = TRUE,
+        scrollY = 400,
+        scroller = TRUE,
+        buttons = c('copy', 'csv', 'excel')
+      )
+    )
 
 
 
