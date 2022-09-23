@@ -6,6 +6,8 @@ utils::globalVariables(
     "observed",
     "predicted",
     "CCC",
-    "where"
+    "where",
+    "moduleServer",
+    "uploaded_data"
   )
 )
