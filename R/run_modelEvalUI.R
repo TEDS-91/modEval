@@ -16,11 +16,10 @@ ui <- shiny::fluidPage(
     ),
     shiny::mainPanel(
 
-      shiny::tableOutput("contents"),
-      DT::dataTableOutput("contents2"),
-      #shiny::tableOutput("contents2"),
-      shiny::plotOutput("grafico_res"),
-      shiny::plotOutput("grafico"),
+      shiny::tableOutput("dataframe_uploaded"),
+      DT::dataTableOutput("model_comparisons"),
+      shiny::plotOutput("residuals_viz"),
+      shiny::plotOutput("pred_vs_obs_viz"),
       shiny::textOutput("shapiro_test")
     )
   )
@@ -28,28 +27,30 @@ ui <- shiny::fluidPage(
 
 server <- function(input, output) {
 
-  contents3 <- shiny::reactive({
+  uploaded_data <- shiny::reactive({
 
     file <- input$file1
+
     ext <- tools::file_ext(file$datapath)
 
     shiny::req(file)
-    shiny::validate(shiny::need(ext == "xlsx", "Please upload a csv file"))
+
+    shiny::validate(shiny::need(ext == "xlsx", "Please upload a XLSX file"))
 
     readxl::read_excel(file$datapath)
 
   })
 
-  output$contents <- shiny::renderTable({
+  output$dataframe_uploaded <- shiny::renderTable({
 
-    contents3() |>
+    uploaded_data() |>
       tibble::as_tibble()
 
   })
 
-  output$contents2 <- DT::renderDataTable({
+  output$model_comparisons <- DT::renderDataTable({
 
-    df_cont <- contents3() |>
+    df_cont <- uploaded_data() |>
       tibble::as_tibble()
 
     df_splited <- df_cont |>
@@ -87,7 +88,7 @@ server <- function(input, output) {
 
     }
 
-    teste <- model_metrics |>
+    model_eval_outcomes <- model_metrics |>
       purrr::set_names(model_names) |>
       purrr::map_df(~ as.data.frame(.x), .id = "Models") |>
       tibble::as_tibble() |>
@@ -95,7 +96,9 @@ server <- function(input, output) {
       dplyr::arrange(-CCC)
 
     DT::datatable(
-      teste, extensions = c('Buttons', 'Scroller'), options = list(
+        model_eval_outcomes,
+        extensions = c('Buttons', 'Scroller'),
+        options = list(
         dom = 'Bfrtip',
         deferRender = TRUE,
         scrollY = 400,
@@ -104,15 +107,11 @@ server <- function(input, output) {
       )
     )
 
-
-
-
-
   })
 
-  output$grafico <- shiny::renderPlot({
+  output$pred_vs_obs_viz <- shiny::renderPlot({
 
-    df_cont <- contents3() |>
+    df_cont <- uploaded_data() |>
       tibble::as_tibble()
 
     df_cont |>
@@ -150,9 +149,9 @@ server <- function(input, output) {
 
   })
 
-  output$grafico_res <- shiny::renderPlot({
+  output$residuals_viz <- shiny::renderPlot({
 
-    graphics::hist(contents3()[[2]] - contents3()[[1]],
+    graphics::hist(uploaded_data()[[2]] - uploaded_data()[[1]],
          xlab = "Residuals",
          ylab = "Frequency",
          main = "Histogram of Residuals",
@@ -162,7 +161,7 @@ server <- function(input, output) {
 
   output$shapiro_test <- shiny::renderPrint({
 
-    shapiro_test <- stats::shapiro.test(contents3()[[2]] - contents3()[[1]])
+    shapiro_test <- stats::shapiro.test(uploaded_data()[[2]] - uploaded_data()[[1]])
 
     pvalue_shapiro <- round(shapiro_test[[2]], 3)
 
