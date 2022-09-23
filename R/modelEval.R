@@ -55,15 +55,15 @@ model_eval <- function(obs_values, pred_values) {
 
     return(
       tibble::tibble(
-        "Intercept"   = intercept,
-        "Slope"       = slope,
-        "R-squared"   = r_squared,
+        "Intercept"          = intercept,
+        "Slope"              = slope,
+        "R-squared"          = r_squared,
         "Peason Correlation" = correlation,
-        "Mean Bias"   = mean_bias,
-        "MAE"         = mae,
-        "MSE"         = mse,
-        "RMSE"        = rmse,
-        "CCC"         = ccc
+        "Mean Bias"          = mean_bias,
+        "MAE"                = mae,
+        "MSE"                = mse,
+        "RMSE"               = rmse,
+        "CCC"                = ccc
       )
 
     )
