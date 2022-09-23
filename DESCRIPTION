@@ -18,6 +18,7 @@ Imports:
     purrr,
     readxl,
     shiny,
+    shinythemes,
     tibble,
     tidyr
 URL: https://github.com/TEDS-91/modEval
