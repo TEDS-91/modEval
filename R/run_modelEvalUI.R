@@ -91,6 +91,7 @@ server <- function(input, output) {
       purrr::set_names(model_names) |>
       purrr::map_df(~ as.data.frame(.x), .id = "Models") |>
       tibble::as_tibble() |>
+      dplyr::mutate(dplyr::across(where(is.numeric), round, digits = 2)) |>
       dplyr::arrange(-CCC)
 
     DT::datatable(
