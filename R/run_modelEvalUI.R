@@ -11,7 +11,7 @@ run_modelEvalUI <- function() {
 ui <- shiny::fluidPage(
   shiny::sidebarLayout(
     shiny::sidebarPanel(
-      shiny::fileInput("file1", "Choose a .XLSX File", accept = ".xlsx"),
+      shiny::fileInput("main_file", "Choose a .XLSX File", accept = ".xlsx"),
       shiny::checkboxInput("header", "Header", TRUE)
     ),
     shiny::mainPanel(
@@ -29,7 +29,7 @@ server <- function(input, output) {
 
   uploaded_data <- shiny::reactive({
 
-    file <- input$file1
+    file <- input$main_file
 
     ext <- tools::file_ext(file$datapath)
 
@@ -37,7 +37,7 @@ server <- function(input, output) {
 
     shiny::validate(shiny::need(ext == "xlsx", "Please upload a XLSX file"))
 
-    readxl::read_excel(file$datapath)
+    uploaded_data <- readxl::read_excel(file$datapath)
 
   })
 

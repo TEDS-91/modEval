@@ -5,6 +5,7 @@ utils::globalVariables(
     "residuals",
     "observed",
     "predicted",
-    "CCC"
+    "CCC",
+    "where"
   )
 )
