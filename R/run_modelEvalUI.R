@@ -19,9 +19,15 @@ ui <- shiny::fluidPage(
 
     shiny::mainPanel(
       shiny::tabsetPanel(type = "tabs",
-          shiny::tabPanel("Uploaded dataset", dataframevizUI("dataframe_viz")),
-          shiny::tabPanel("Model metrics", modelcomparisonsUI("model_comparisons")),
-          shiny::tabPanel("Plots", predobsUI("pred_vs_obs_viz"))
+          shiny::tabPanel("Uploaded dataset",
+                          shiny::hr(),
+                          dataframevizUI("dataframe_viz")),
+          shiny::tabPanel("Model Metrics",
+                          shiny::hr(),
+                          modelcomparisonsUI("model_comparisons")),
+          shiny::tabPanel("Predicted vs Observed Plots",
+                          shiny::hr(),
+                          predobsUI("pred_vs_obs_viz"))
       ), width = 8)
   )
 )
