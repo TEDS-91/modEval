@@ -10,19 +10,19 @@ run_modelEvalUI <- function() {
 
 ui <- shiny::fluidPage(
   shinythemes::shinytheme("flatly"),
-  shiny::titlePanel(shiny::h2(shiny::strong("Model Evaluation Tool", style = "color: #007582"))),
-  shiny::sidebarLayout(
-    shiny::sidebarPanel(
+    shiny::titlePanel(shiny::h2(shiny::strong("Model Evaluation Tool", style = "color: #007582"))),
+      shiny::sidebarLayout(
+        shiny::sidebarPanel(
+          uploadUI("data_uploaded"),
 
-    uploadUI("data_uploaded")
-
-    ),
+          width = 4),
 
     shiny::mainPanel(
-      dataframevizUI("dataframe_viz"),
-      modelcomparisonsUI("model_comparisons"),
-      predobsUI("pred_vs_obs_viz")
-    )
+      shiny::tabsetPanel(type = "tabs",
+          shiny::tabPanel("Uploaded dataset", dataframevizUI("dataframe_viz")),
+          shiny::tabPanel("Model metrics", modelcomparisonsUI("model_comparisons")),
+          shiny::tabPanel("Plots", predobsUI("pred_vs_obs_viz"))
+      ), width = 8)
   )
 )
 
@@ -34,7 +34,7 @@ server <- function(input, output) {
 
    df_model_rank <- modelcomparisonsServer("model_comparisons", dataset = data_uploaded)
 
-   model_pred_vs_obs <- predobsServer("pred_vs_obs_viz", dataset = data_uploaded)
+   predobsServer("pred_vs_obs_viz", dataset = data_uploaded)
 
 }
 

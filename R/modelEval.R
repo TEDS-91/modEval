@@ -37,13 +37,17 @@ model_eval <- function(obs_values, pred_values) {
 
     correlation <- stats::cor(obs_values, pred_values)
 
-    ccc <- (2 * stats::cov(obs_values, pred_values)) / ((mean_obs_values - mean_pred_values)^2 + var_obs_values + var_pred_values)
-
     mae <- sum(abs(mean_obs_values - mean_pred_values)) / length(obs_values)
 
     mse <- sum((obs_values - pred_values)^2) / length(obs_values)
 
     rmse <- sqrt(sum((obs_values - pred_values)^2) / length(obs_values))
+
+    ccc <- (2 * stats::cov(obs_values, pred_values)) / ((mean_obs_values - mean_pred_values)^2 + var_obs_values + var_pred_values)
+
+    cd <- sum((obs_values - mean_obs_values)^2) / sum((pred_values - mean_obs_values)^2)
+
+    me <- 1 - sum((obs_values - pred_values)^2) / sum((obs_values - mean_obs_values)^2)
 
     linear_reg <- stats::lm(obs_values ~ pred_values)
 
@@ -63,7 +67,9 @@ model_eval <- function(obs_values, pred_values) {
         "MAE"                = mae,
         "MSE"                = mse,
         "RMSE"               = rmse,
-        "CCC"                = ccc
+        "CCC"                = ccc,
+        "CD"                 = cd,
+        "ME"                 = me
       )
 
     )

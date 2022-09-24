@@ -14,10 +14,10 @@ modelcomparisonsServer <- function(id, dataset) {
 
     output$model_comparisons <- DT::renderDataTable({
 
-      df_cont <- dataset() %>%
+      df <- dataset() %>%
         tibble::as_tibble()
 
-      df_splited <- df_cont %>%
+      df_splited <- df %>%
         tidyr::pivot_longer(
           cols = -1,
           names_to = "models",
@@ -31,7 +31,7 @@ modelcomparisonsServer <- function(id, dataset) {
         dplyr::relocate(models, .before = observed) %>%
         dplyr::group_split(models)
 
-      model_names <- df_cont %>%
+      model_names <- df %>%
         tidyr::pivot_longer(
           cols = -1,
           names_to = "models",
@@ -56,7 +56,7 @@ modelcomparisonsServer <- function(id, dataset) {
         purrr::set_names(model_names) %>%
         purrr::map_df(~ as.data.frame(.x), .id = "Models") %>%
         tibble::as_tibble() %>%
-        dplyr::mutate(dplyr::across(where(is.numeric), round, digits = 2)) %>%
+        dplyr::mutate(dplyr::across(where(is.numeric), round, digits = 3)) %>%
         dplyr::arrange(-CCC)
 
       DT::datatable(
@@ -70,8 +70,6 @@ modelcomparisonsServer <- function(id, dataset) {
           buttons = c('copy', 'csv', 'excel')
         )
       )
-
     })
-
   })
 }

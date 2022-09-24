@@ -11,10 +11,10 @@ predobsServer <- function(id, dataset) {
 
     output$pred_vs_obs_viz <- shiny::renderPlot({
 
-      df_cont <- dataset() %>%
+      df <- dataset() %>%
         tibble::as_tibble()
 
-      df_cont %>%
+      df %>%
         tidyr::pivot_longer(
           cols = -1,
           names_to = "models",
@@ -43,10 +43,12 @@ predobsServer <- function(id, dataset) {
                                                "Regression Line (a + bx)" = "blue",
                                                "Residuals"       = "red",
                                                "Regression Line for Residuals" = "black")) +
-        ggplot2::theme(legend.position = "bottom")
+        ggplot2::theme(legend.position = "bottom",
+                       text            = ggplot2::element_text(size = 14),
+                       legend.text     = ggplot2::element_text(size = 14))
 
 
-    })
+    }, height = 700, width = 900)
 
   })
 }
