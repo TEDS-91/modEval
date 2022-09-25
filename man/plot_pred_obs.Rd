@@ -7,7 +7,7 @@
 plot_pred_obs(dataset)
 }
 \arguments{
-\item{dataset}{}
+\item{dataset}{provide a dataset to...}
 }
 \value{
 a plot with ...

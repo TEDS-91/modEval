@@ -1,7 +1,4 @@
 
-
-
-
 dataframevizUI <- function(id) {
   shiny::tagList(
 

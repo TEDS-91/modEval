@@ -12,8 +12,7 @@ ui <- shiny::fluidPage(
       shiny::sidebarLayout(
         shiny::sidebarPanel(
           uploadUI("data_uploaded"),
-
-          width = 4),
+        width = 4),
 
     shiny::mainPanel(
       shiny::tabsetPanel(type = "tabs",

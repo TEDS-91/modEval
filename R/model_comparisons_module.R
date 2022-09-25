@@ -1,6 +1,4 @@
 
-
-
 modelcomparisonsUI <- function(id) {
   shiny::tagList(
 
@@ -15,7 +13,8 @@ modelcomparisonsServer <- function(id, dataset) {
     output$model_comparisons <- DT::renderDataTable({
 
       df <- dataset() %>%
-        tibble::as_tibble()
+        tibble::as_tibble() %>%
+        dplyr::rename("observed" = names(dataset()[1]))
 
       df_splited <- df %>%
         tidyr::pivot_longer(
