@@ -8,6 +8,7 @@ utils::globalVariables(
     "CCC",
     "where",
     "moduleServer",
-    "uploaded_data"
+    "uploaded_data",
+    "data_template"
   )
 )
