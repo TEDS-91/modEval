@@ -11,7 +11,11 @@ ui <- shiny::fluidPage(
     shiny::titlePanel(shiny::h2(shiny::strong("Model Evaluation Tool", style = "color: #007582"))),
       shiny::sidebarLayout(
         shiny::sidebarPanel(
+
           uploadUI("data_uploaded"),
+
+          datatemplateUI("template"),
+
         width = 4),
 
     shiny::mainPanel(
@@ -30,6 +34,8 @@ ui <- shiny::fluidPage(
 )
 
 server <- function(input, output) {
+
+   datatemplateServer("template")
 
    data_uploaded <- uploadServer("data_uploaded")
 

@@ -46,10 +46,7 @@ plot_pred_obs <- function(dataset) {
        ggplot2::theme(legend.position = "bottom",
                       text            = ggplot2::element_text(size = 14),
                       legend.text     = ggplot2::element_text(size = 14))
-
-     #"You have entered an object for the dataset argument of the plot_pred_obs() function that is not a data.frame or tibble."
   }
-
 }
 
 
