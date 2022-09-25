@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of modEval is to perform model evaluation and comparisons.
+The goal of modEval is to perform model evaluation and model comparisons.
 
 ## Installation
 
@@ -34,6 +34,10 @@ devtools::install_github("TEDS-91/modEval")
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
+
 library(modEval)
 ## basic example code
+
+run_modelEvalUI()
+
 ```
