@@ -20,12 +20,15 @@ ui <- shiny::fluidPage(
 
     shiny::mainPanel(
       shiny::tabsetPanel(type = "tabs",
+
           shiny::tabPanel("Uploaded dataset",
                           shiny::hr(),
                           dataframevizUI("dataframe_viz")),
+
           shiny::tabPanel("Model Metrics",
                           shiny::hr(),
                           modelcomparisonsUI("model_comparisons")),
+
           shiny::tabPanel("Predicted vs Observed Plots",
                           shiny::hr(),
                           predobsUI("pred_vs_obs_viz"))
@@ -35,14 +38,19 @@ ui <- shiny::fluidPage(
 
 server <- function(input, output) {
 
+   # running the template module
    datatemplateServer("template")
 
+   # running the upload module
    data_uploaded <- uploadServer("data_uploaded")
 
+   # running the dataframeviz module
    df_viz <- dataframevizServer("dataframe_viz", dataset = data_uploaded)
 
+   # running the model comparisons module
    df_model_rank <- modelcomparisonsServer("model_comparisons", dataset = data_uploaded)
 
+   # running the predobs module
    predobsServer("pred_vs_obs_viz", dataset = data_uploaded)
 
 }
