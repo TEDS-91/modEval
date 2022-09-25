@@ -2,5 +2,6 @@
 
 export("%>%")
 export(model_eval)
+export(plot_pred_obs)
 export(run_modelEvalUI)
 importFrom(magrittr,"%>%")

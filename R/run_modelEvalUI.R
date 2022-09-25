@@ -4,8 +4,6 @@
 #' @return graphical interface where the user can upload a .XLSX file to perform
 #' the model evaluation
 #' @export
-#'
-#' @examples
 run_modelEvalUI <- function() {
 
 ui <- shiny::fluidPage(

@@ -1,5 +1,9 @@
-
-
+#' plot_pred_obs
+#'
+#' @param dataset
+#'
+#' @return a plot with ...
+#' @export
 plot_pred_obs <- function(dataset) {
 
   dataset %>%

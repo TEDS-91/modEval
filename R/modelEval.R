@@ -7,8 +7,7 @@
 #'
 #' @return list with the main statistics
 #' @export
-#'
-#' @examples
+
 model_eval <- function(obs_values, pred_values) {
 
   if(is.character(obs_values) | is.character(pred_values)){
