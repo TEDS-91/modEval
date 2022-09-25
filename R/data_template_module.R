@@ -2,7 +2,7 @@
 datatemplateUI <- function(id) {
   shiny::tagList(
 
-    shiny::downloadButton(shiny::NS(id, "downloadBtn"), "Download CSV Template!")
+    shiny::downloadButton(shiny::NS(id, "downloadBtn"), " Download CSV Template!")
 
   )
 }
