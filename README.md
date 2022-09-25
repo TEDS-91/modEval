@@ -6,8 +6,8 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of modEval is to perform model evaluation and model
-comparisons.
+The goal of **modEval** package is to allow users to perform statistical
+model evaluation and comparison.
 
 ## Installation
 
@@ -25,10 +25,32 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(modEval)
-## basic example code
 
-run_modelEvalUI()
-#> PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
+## Model evaluation - metrics
+
+predicted <- data_template$`Full Model`
+
+observed <- data_template$observed
+
+model_eval(obs_values = observed , pred_values = predicted)
+#> # A tibble: 1 x 11
+#>   Intercept Slope `R-squared` `Peason Correlati~ `Mean Bias`     MAE   MSE  RMSE
+#>       <dbl> <dbl>       <dbl>              <dbl>       <dbl>   <dbl> <dbl> <dbl>
+#> 1   0.00480  1.00       0.734              0.857   -0.000313 9.77e-6 1209.  34.8
+#> # ... with 3 more variables: CCC <dbl>, CD <dbl>, ME <dbl>
 ```
 
-<div style="width: 100% ; height: 400px ; text-align: center; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;" class="muted well">Shiny applications not supported in static R Markdown documents</div>
+``` r
+## Predicted vs Observed
+
+plot_pred_obs(data_template)
+```
+
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+
+# The “run_modelEvalUI()” function
+
+If you run **run_modelEvalUI()** a graphical user interface will pop up
+in your screen. It is a shiny application where you are able to download
+a template **.csv** file, fill it up with your own data and upload the
+**.csv** to feed to app.

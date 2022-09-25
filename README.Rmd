@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of modEval is to perform model evaluation and model comparisons.
+The goal of __modEval__ package is to allow users to perform statistical model evaluation and comparison. 
 
 ## Installation
 
@@ -33,11 +33,28 @@ devtools::install_github("TEDS-91/modEval")
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
+```{r}
 
 library(modEval)
-## basic example code
 
-run_modelEvalUI()
+## Model evaluation - metrics
+
+predicted <- data_template$`Full Model`
+
+observed <- data_template$observed
+
+model_eval(obs_values = observed , pred_values = predicted)
+```
+
+
+```{r, warning = FALSE, message = FALSE}
+
+## Predicted vs Observed
+
+plot_pred_obs(data_template)
 
 ```
+
+# The "run_modelEvalUI()" function
+
+If you run __run_modelEvalUI()__ a graphical user interface will pop up in your screen. It is a shiny application where you are able to download a template __.csv__ file, fill it up with your own data and upload the __.csv__ to feed to app. 
