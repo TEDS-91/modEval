@@ -1,13 +1,15 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# modEval
+# Overview
 
 <!-- badges: start -->
 <!-- badges: end -->
 
 The goal of **modEval** package is to allow users to perform statistical
-model evaluation and comparison.
+model evaluation and comparison. Package developed as part of the
+requirements of the package development course offered by
+[**Curso-R**](https://curso-r.com/).
 
 ## Installation
 
