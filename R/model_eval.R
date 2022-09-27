@@ -4,7 +4,7 @@
 #' @param obs_values observed values.
 #' @param pred_values predicted values.
 #'
-#' @return list with the main statistics
+#' @return list with the main statistics for model evaluation and comparison.
 #' @export
 
 model_eval <- function(obs_values, pred_values) {

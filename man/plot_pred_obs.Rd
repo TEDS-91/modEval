@@ -7,10 +7,10 @@
 plot_pred_obs(dataset)
 }
 \arguments{
-\item{dataset}{provide a dataset to...}
+\item{dataset}{with observed and predicted values from one or more models. The first column of these data frame MUST be named as observed.}
 }
 \value{
-a plot with ...
+a plot with predicted vs observed values, in addition to other statistical features.
 }
 \description{
 plot_pred_obs

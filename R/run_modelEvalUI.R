@@ -2,7 +2,7 @@
 #' Graphical Interface for Model Evaluation
 #'
 #' @return graphical interface where the user can upload a .XLSX file to perform
-#' the model evaluation
+#' the model evaluation. There is no parameters for this function.
 #' @export
 run_modelEvalUI <- function() {
 

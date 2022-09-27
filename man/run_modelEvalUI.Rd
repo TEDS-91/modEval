@@ -8,7 +8,7 @@ run_modelEvalUI()
 }
 \value{
 graphical interface where the user can upload a .XLSX file to perform
-the model evaluation
+the model evaluation. There is no parameters for this function.
 }
 \description{
 Graphical Interface for Model Evaluation

@@ -12,7 +12,7 @@ model_eval(obs_values, pred_values)
 \item{pred_values}{predicted values.}
 }
 \value{
-list with the main statistics
+list with the main statistics for model evaluation and comparison.
 }
 \description{
 model_eval
