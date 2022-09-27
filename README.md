@@ -53,6 +53,6 @@ plot_pred_obs(data_template)
 # The “run_modelEvalUI()” function
 
 If you run **run_modelEvalUI()** a graphical user interface will pop up
-in your screen. It is a shiny application where you are able to download
+on your screen. It is a shiny application where you are able to download
 a template **.csv** file, fill it up with your own data and upload the
-**.csv** to feed to app.
+**.csv** to feed to the app.

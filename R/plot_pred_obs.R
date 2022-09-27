@@ -44,20 +44,20 @@ plot_pred_obs <- function(dataset) {
        ggplot2::ylab("Observed Values") +
        ggplot2::scale_color_manual(name   = " ",
                                    breaks = c("Observed",
-                                              "Regression Line (a + bx)",
+                                              "Regression Line (a = 0 and b = 1)",
                                               "Fitted",
                                               "Residuals",
-                                              "Zero line residuals",
+                                              "Zero Line Residuals",
                                               "Regression Line for Residuals"),
                                    values = c("Observed"        = "grey",
-                                              "Regression Line (a + bx)" = "blue",
+                                              "Regression Line (a = 0 and b = 0)" = "blue",
                                               "Fitted"          = "black",
                                               "Residuals"       = "orange",
-                                              "Zero line residuals" = "black",
+                                              "Zero Line Residuals" = "black",
                                               "Regression Line for Residuals" = "blue")) +
        ggplot2::theme(legend.position = "bottom",
-                      text            = ggplot2::element_text(size = 14),
-                      legend.text     = ggplot2::element_text(size = 14))
+                      text            = ggplot2::element_text(size = 13),
+                      legend.text     = ggplot2::element_text(size = 13))
   }
 }
 

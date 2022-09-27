@@ -14,7 +14,7 @@ predobsServer <- function(id, dataset) {
 
       plot_pred_obs(dataset())
 
-    }, height = 700, width = 1000)
+    }, height = 700, width = 900)
 
   })
 }

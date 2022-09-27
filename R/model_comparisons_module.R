@@ -64,7 +64,7 @@ modelcomparisonsServer <- function(id, dataset) {
         options = list(
           dom = 'Bfrtip',
           deferRender = TRUE,
-          scrollY = 400,
+          scrollY = 300,
           scroller = TRUE,
           buttons = c('copy', 'csv', 'excel')
         )
