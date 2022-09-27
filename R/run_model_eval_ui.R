@@ -4,7 +4,7 @@
 #' @return graphical interface where the user can upload a .XLSX file to perform
 #' the model evaluation. There is no parameters for this function.
 #' @export
-run_modelEvalUI <- function() {
+model_eval_ui <- function() {
 
 ui <- shiny::fluidPage(
   shinythemes::shinytheme("flatly"),

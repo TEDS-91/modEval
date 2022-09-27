@@ -44,6 +44,7 @@ predicted <- data_template$`Full Model`
 observed <- data_template$observed
 
 model_eval(obs_values = observed , pred_values = predicted)
+
 ```
 
 
@@ -55,6 +56,6 @@ plot_pred_obs(data_template)
 
 ```
 
-# The "run_modelEvalUI()" function
+# The "model_eval_ui()" function
 
-If you run __run_modelEvalUI()__ a graphical user interface will pop up on your screen. It is a shiny application where you are able to download a template __.csv__ file, fill it up with your own data and upload the __.csv__ to feed to the app. 
+If you run __model_eval_ui()__ a graphical user interface will pop up on your screen. It is a shiny application where you are able to download a template __.csv__ file, fill it up with your own data and upload the __.csv__ to feed to the app. 

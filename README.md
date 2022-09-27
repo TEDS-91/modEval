@@ -50,9 +50,9 @@ plot_pred_obs(data_template)
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
-# The “run_modelEvalUI()” function
+# The “model_eval_ui()” function
 
-If you run **run_modelEvalUI()** a graphical user interface will pop up
-on your screen. It is a shiny application where you are able to download
-a template **.csv** file, fill it up with your own data and upload the
+If you run **model_eval_ui()** a graphical user interface will pop up on
+your screen. It is a shiny application where you are able to download a
+template **.csv** file, fill it up with your own data and upload the
 **.csv** to feed to the app.
