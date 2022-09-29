@@ -18,11 +18,15 @@ dataframevizServer <- function(id, dataset) {
         DT::datatable(
         options = list(
             columnDefs = list(list(className = 'dt-center', targets = 5)),
-            pageLength = 5,
-            lengthMenu = c(5, 10, 15, 20)
+            pageLength = 20,
+            lengthMenu = c(5, 10, 20, 40),
+            initComplete = DT::JS(
+              "function(settings, json) {",
+              "$(this.api().table().header()).css({'background-color': '#16A085', 'color': '#FDFEFE'});",
+              "}"
           )
+        )
       )
-
     })
   })
 }

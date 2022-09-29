@@ -73,7 +73,11 @@ modelcomparisonsServer <- function(id, dataset) {
           scroller    = TRUE,
           autoWidth   = TRUE,
           columnDefs = list(list(width = '200px', targets = "_all")),
-          buttons     = c('copy', 'csv', 'excel')
+          buttons     = c('copy', 'csv', 'excel'),
+          initComplete = DT::JS(
+            "function(settings, json) {",
+            "$(this.api().table().header()).css({'background-color': '#16A085', 'color': '#FDFEFE'});",
+            "}")
         )
       )
     })
