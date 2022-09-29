@@ -16,10 +16,12 @@ modelcomparisonsServer <- function(id, dataset) {
 
     output$model_comparisons <- DT::renderDataTable({
 
+      # renaming the first column
       df <- dataset() %>%
         tibble::as_tibble() %>%
         dplyr::rename("observed" = names(dataset()[1]))
 
+      # pivotting the dataset
       df_splited <- df %>%
         tidyr::pivot_longer(
           cols = -1,
@@ -34,6 +36,7 @@ modelcomparisonsServer <- function(id, dataset) {
         dplyr::relocate(models, .before = observed) %>%
         dplyr::group_split(models)
 
+      # getting the model names
       model_names <- df %>%
         tidyr::pivot_longer(
           cols = -1,
@@ -47,6 +50,7 @@ modelcomparisonsServer <- function(id, dataset) {
         dplyr::pull(models) %>%
         unique()
 
+      # calculating the model metrics
       model_metrics <- vector("list", length(model_names))
 
       for ( i in 1:length(model_names)) {
@@ -55,6 +59,7 @@ modelcomparisonsServer <- function(id, dataset) {
 
       }
 
+      # model metrics/outcomes
       model_eval_outcomes <- model_metrics %>%
         purrr::set_names(model_names) %>%
         purrr::map_df(~ as.data.frame(.x), .id = "Models") %>%
@@ -62,6 +67,7 @@ modelcomparisonsServer <- function(id, dataset) {
         dplyr::mutate(dplyr::across(where(is.numeric), round, digits = 3)) %>%
         dplyr::arrange(-CCC)
 
+      # creating the datatable
       DT::datatable(
         model_eval_outcomes,
         extensions = c('Buttons', 'Scroller'),

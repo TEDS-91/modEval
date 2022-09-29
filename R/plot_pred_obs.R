@@ -11,11 +11,11 @@ plot_pred_obs <- function(dataset) {
 
       usethis::ui_stop("You have entered an object for the dataset argument of the plot_pred_obs() function that is not a data.frame or tibble.")
 
-   }else if(any(sapply(dataset, is.factor) == TRUE) | any(sapply(dataset, is.character) == TRUE)) {
+   } else if (any(sapply(dataset, is.factor) == TRUE) | any(sapply(dataset, is.character) == TRUE)) {
 
       usethis::ui_stop("Your dataset contains factors or characters! Please upload a dataset with just numerical columns.")
 
-   }else{
+   } else {
 
      plot_p <- dataset %>%
        dplyr::rename("observed" = names(dataset)[1]) %>%
@@ -59,6 +59,7 @@ plot_pred_obs <- function(dataset) {
                       text            = ggplot2::element_text(size = 11),
                       legend.text     = ggplot2::element_text(size = 9))
 
+     # using plotly library
      plotly::ggplotly(plot_p, height = 700, width = 1000) %>%
         plotly::config(displayModeBar = F)  %>%
         plotly::layout(legend = list(orientation = "h", x = 0.4, y = -0.2))

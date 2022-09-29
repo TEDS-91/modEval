@@ -35,28 +35,39 @@ model_eval <- function(obs_values, pred_values) {
 
     correlation <- stats::cor(obs_values, pred_values)
 
+    # Mean absolute error
     mae <- sum(abs(mean_obs_values - mean_pred_values)) / length(obs_values)
 
+    # Mean absolute error
     mse <- sum((obs_values - pred_values)^2) / length(obs_values)
 
+    # Root mean square
     rmse <- sqrt(sum((obs_values - pred_values)^2) / length(obs_values))
 
+    # Concordance correlation coefficient
     ccc <- (2 * stats::cov(obs_values, pred_values)) / ((mean_obs_values - mean_pred_values)^2 + var_obs_values + var_pred_values)
 
+    # Coefficient of model determination
     cd <- sum((obs_values - mean_obs_values)^2) / sum((pred_values - mean_obs_values)^2)
 
+    # Modeling efficiency
     me <- 1 - sum((obs_values - pred_values)^2) / sum((obs_values - mean_obs_values)^2)
 
+    # linear model
     linear_reg <- stats::lm(obs_values ~ pred_values)
 
+    # getting the coefficients
     intercept <- linear_reg$coefficients[[1]]
 
     slope <- linear_reg$coefficients[[2]]
 
+    # getting r-squared
     r_squared <- stats::cor(obs_values, pred_values)^2
 
+    # calculating p-values (a = 0, b = 1)
     p_values <- summary(stats::lm(obs_values ~ 1 + pred_values + offset(pred_values)))
 
+    # getting p-values
     intercept_pvalue <- p_values$coefficients[7]
 
     slope_pvalue <- p_values$coefficients[8]
@@ -77,9 +88,6 @@ model_eval <- function(obs_values, pred_values) {
         "CD"                  = cd,
         "ME"                  = me
       )
-
     )
-
   }
-
 }
