@@ -9,11 +9,11 @@ plot_pred_obs <- function(dataset) {
 
    if(!is.data.frame(dataset) & !tibble::is_tibble(dataset)) {
 
-     "You have entered an object for the dataset argument of the plot_pred_obs() function that is not a data.frame or tibble."
+      usethis::ui_stop("You have entered an object for the dataset argument of the plot_pred_obs() function that is not a data.frame or tibble.")
 
    }else if(any(sapply(dataset, is.factor) == TRUE) | any(sapply(dataset, is.character) == TRUE)) {
 
-     "Your dataset contains factors or characters! Please upload a dataset with just numerical columns."
+      usethis::ui_stop("Your dataset contains factors or characters! Please upload a dataset with just numerical columns.")
 
    }else{
 

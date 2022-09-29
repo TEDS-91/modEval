@@ -11,15 +11,15 @@ model_eval <- function(obs_values, pred_values) {
 
   if(is.character(obs_values) | is.character(pred_values)){
 
-    "At least one of the vectors has a string element! Please check them!"}
+    usethis::ui_stop("At least one of the vectors has a string element! Please check them!")}
 
   else if(length(obs_values) != length(pred_values)){
 
-    "The vectors do not have the same length! Please check them!"}
+    usethis::ui_stop("The vectors do not have the same length! Please check them!")}
 
   else if(anyNA(obs_values) | anyNA(pred_values)){
 
-    "At least one vector has NA element! Please check them!"
+    usethis::ui_stop("At least one vector has NA elements! Please check them!")
 
   } else {
 
