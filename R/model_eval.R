@@ -55,19 +55,27 @@ model_eval <- function(obs_values, pred_values) {
 
     r_squared <- stats::cor(obs_values, pred_values)^2
 
+    p_values <- summary(stats::lm(obs_values ~ 1 + pred_values + offset(pred_values)))
+
+    intercept_pvalue <- p_values$coefficients[7]
+
+    slope_pvalue <- p_values$coefficients[8]
+
     return(
       tibble::tibble(
-        "Intercept"          = intercept,
-        "Slope"              = slope,
-        "r"                  = correlation,
-        "r2"                 = r_squared,
-        "MB"                 = mean_bias,
-        "MAE"                = mae,
-        "MSE"                = mse,
-        "RMSE"               = rmse,
-        "CCC"                = ccc,
-        "CD"                 = cd,
-        "ME"                 = me
+        "Intercept"           = intercept,
+        "Intercept - p-value" = intercept_pvalue,
+        "Slope"               = slope,
+        "Slope - p-value"     = slope_pvalue,
+        "r"                   = correlation,
+        "r2"                  = r_squared,
+        "MB"                  = mean_bias,
+        "MAE"                 = mae,
+        "MSE"                 = mse,
+        "RMSE"                = rmse,
+        "CCC"                 = ccc,
+        "CD"                  = cd,
+        "ME"                  = me
       )
 
     )

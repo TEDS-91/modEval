@@ -3,6 +3,7 @@ model_explanationUI <- function(id) {
   shiny::tagList(
 
     shiny::tags$p(shiny::tags$b("Intercept and Slope:"), "Regressions coefficients.",
+    shiny::tags$b("Slope p-value and Intercept p-value:"), "Hipothesis test: b0 = 0 and b1 = 1.",
     shiny::tags$b("r:"), " Pearson correlation.",
     shiny::tags$b("r2:"), "Coefficient of determination.",
     shiny::tags$b("MB:"), "Mean bias.",
