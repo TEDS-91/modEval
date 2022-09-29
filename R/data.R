@@ -1,14 +1,16 @@
 
 #' data_template
 #'
-#' Uma base que contém...
+#' Template to be used for the user.
 #'
-#' @format Uma base com 8026 linhas e 8 colunas:
+#' @format dataset with 32 rows and 5 columns:
 #' \describe{
-#'   \item{temporada}{Descrição da coluna 1}
-#'   \item{time}{Descrição da coluna 2}
-#'   \item{n_vitorias}{Descrição da coluna 2}
+#'   \item{observed}{Observed values}
+#'   \item{Reduced Model 1}{Predicted values for the Reduced Model 1.}
+#'   \item{Reduced Model 2}{Predicted values for the Reduced Model 2.}
+#'   \item{Reduced Model 3}{Predicted values for the Reduced Model 3.}
+#'   \item{Full Model}{Predicted values for the Full Model.}
 #'   ...
 #' }
-#' @source Origem dos dados \url{https://www.cbf.com.br/futebol-brasileiro/competicoes/campeonato-brasileiro-serie-a}
+#' @source Data simulated for this application.
 "data_template"
