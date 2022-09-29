@@ -36,23 +36,14 @@ observed <- data_template$observed
 
 model_eval(obs_values = observed, pred_values = predicted)
 #> # A tibble: 1 x 11
-#>   Intercept Slope `Peason correlatio~ `R-squared`        MB      MAE   MSE  RMSE
-#>       <dbl> <dbl>               <dbl>       <dbl>     <dbl>    <dbl> <dbl> <dbl>
-#> 1   0.00480  1.00               0.857       0.734 -0.000313  9.77e-6 1209.  34.8
-#> # ... with 3 more variables: CCC <dbl>, CD <dbl>, ME <dbl>
+#>   Intercept Slope     r    r2        MB        MAE   MSE  RMSE   CCC    CD    ME
+#>       <dbl> <dbl> <dbl> <dbl>     <dbl>      <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#> 1   0.00480  1.00 0.857 0.734 -0.000313 0.00000977 1209.  34.8 0.847  1.36 0.734
 ```
-
-``` r
-## Predicted vs Observed
-
-plot_pred_obs(data_template)
-```
-
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
 # The “model_eval_ui()” function
 
 If you run **model_eval_ui()** a graphical user interface will pop up on
 your screen. It is a shiny application where you are able to download a
-template **.csv** file, fill it up with your own data and upload the
-**.csv** to feed to the app.
+template **.xlsx** file, fill it up with your own data and upload the
+**.xlsx** to feed to the app.

@@ -48,14 +48,7 @@ model_eval(obs_values = observed, pred_values = predicted)
 ```
 
 
-```{r, warning = FALSE, message = FALSE}
-
-## Predicted vs Observed
-
-plot_pred_obs(data_template)
-
-```
 
 # The "model_eval_ui()" function
 
-If you run __model_eval_ui()__ a graphical user interface will pop up on your screen. It is a shiny application where you are able to download a template __.csv__ file, fill it up with your own data and upload the __.csv__ to feed to the app. 
+If you run __model_eval_ui()__ a graphical user interface will pop up on your screen. It is a shiny application where you are able to download a template __.xlsx__ file, fill it up with your own data and upload the __.xlsx__ to feed to the app. 
