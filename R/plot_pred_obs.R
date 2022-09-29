@@ -17,7 +17,7 @@ plot_pred_obs <- function(dataset) {
 
    }else{
 
-     dataset %>%
+     plot_p <- dataset %>%
        dplyr::rename("observed" = names(dataset)[1]) %>%
        tidyr::pivot_longer(
          cols = -1,
@@ -56,8 +56,13 @@ plot_pred_obs <- function(dataset) {
                                               "Zero Line Residuals" = "black",
                                               "Regression Line for Residuals" = "blue")) +
        ggplot2::theme(legend.position = "bottom",
-                      text            = ggplot2::element_text(size = 13),
-                      legend.text     = ggplot2::element_text(size = 13))
+                      text            = ggplot2::element_text(size = 11),
+                      legend.text     = ggplot2::element_text(size = 9))
+
+     plotly::ggplotly(plot_p, height = 700, width = 1000) %>%
+        plotly::config(displayModeBar = F)  %>%
+        plotly::layout(legend = list(orientation = "h", x = 0.4, y = -0.2))
+
   }
 }
 

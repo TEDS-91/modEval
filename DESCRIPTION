@@ -15,6 +15,7 @@ Imports:
     ggplot2,
     glue,
     magrittr,
+    plotly,
     purrr,
     readr,
     readxl,
