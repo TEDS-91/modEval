@@ -3,7 +3,7 @@
 uploadUI <- function(id) {
   shiny::tagList(
 
-    shiny::fileInput(shiny::NS(id, "main_file"), "Choose a .xlsx File", accept = ".xlsx")
+    shiny::fileInput(shiny::NS(id, "main_file"), "Choose a .xlsx file", accept = ".xlsx")
 
   )
 }
