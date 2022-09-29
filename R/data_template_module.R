@@ -2,7 +2,7 @@
 datatemplateUI <- function(id) {
   shiny::tagList(
 
-    shiny::downloadButton(shiny::NS(id, "downloadBtn"), " Download CSV Template!")
+    shiny::downloadButton(shiny::NS(id, "downloadBtn"), " Download .xlsx template!")
 
   )
 }
@@ -14,10 +14,10 @@ datatemplateServer <- function(id) {
 
     output$downloadBtn <- shiny::downloadHandler(
       filename = function() {
-        paste("data_template", ".csv", sep = "")
+        paste("data_template", ".xlsx", sep = "")
       },
       content = function(file) {
-        readr::write_csv(data_template_df, file)
+        writexl::write_xlsx(data_template_df, file)
       }
     )
 

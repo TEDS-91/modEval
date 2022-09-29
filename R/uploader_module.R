@@ -3,7 +3,7 @@
 uploadUI <- function(id) {
   shiny::tagList(
 
-    shiny::fileInput(shiny::NS(id, "main_file"), "Choose a .CSV File", accept = ".csv")
+    shiny::fileInput(shiny::NS(id, "main_file"), "Choose a .XLSX File", accept = ".xlsx")
 
   )
 }
@@ -19,9 +19,9 @@ uploadServer <- function(id) {
 
       shiny::req(file)
 
-      shiny::validate(shiny::need(ext == "csv", "Please upload a CSV file"))
+      shiny::validate(shiny::need(ext == "xlsx", "Please upload a XLSX file"))
 
-      uploaded_data <- readr::read_csv(file$datapath, show_col_types = FALSE)
+      uploaded_data <- readxl::read_excel(file$datapath)
 
     })
 

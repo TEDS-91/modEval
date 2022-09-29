@@ -21,7 +21,8 @@ Imports:
     shiny,
     shinythemes,
     tibble,
-    tidyr
+    tidyr,
+    writexl
 URL: https://github.com/TEDS-91/modEval
 BugReports: https://github.com/TEDS-91/modEval/issues
 Depends: 

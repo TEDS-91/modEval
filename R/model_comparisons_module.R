@@ -2,7 +2,11 @@
 modelcomparisonsUI <- function(id) {
   shiny::tagList(
 
-    DT::dataTableOutput(shiny::NS(id, "model_comparisons"))
+    DT::dataTableOutput(shiny::NS(id, "model_comparisons")),
+
+    shiny::br(),
+
+    model_explanationUI(shiny::NS(id, "model_metrics_explanation"))
 
   )
 }
@@ -62,11 +66,14 @@ modelcomparisonsServer <- function(id, dataset) {
         model_eval_outcomes,
         extensions = c('Buttons', 'Scroller'),
         options = list(
-          dom = 'Bfrtip',
-          deferRender = TRUE,
-          scrollY = 300,
-          scroller = TRUE,
-          buttons = c('copy', 'csv', 'excel')
+          dom         = 'Bfrtip',
+          pageLength  = 20,
+          scrollY     = TRUE,
+          scrollY     = TRUE,
+          scroller    = TRUE,
+          autoWidth   = TRUE,
+          columnDefs = list(list(width = '200px', targets = "_all")),
+          buttons     = c('copy', 'csv', 'excel')
         )
       )
     })

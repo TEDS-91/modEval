@@ -16,7 +16,7 @@ ui <- shiny::fluidPage(
 
           datatemplateUI("template"),
 
-        width = 4),
+        width = 3),
 
     shiny::mainPanel(
       shiny::tabsetPanel(type = "tabs",
@@ -32,7 +32,7 @@ ui <- shiny::fluidPage(
           shiny::tabPanel("Predicted vs Observed Plots",
                           shiny::hr(),
                           predobsUI("pred_vs_obs_viz"))
-      ), width = 8)
+      ), width = 9)
   )
 )
 
