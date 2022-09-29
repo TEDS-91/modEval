@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_pred_obs.R
 \name{plot_pred_obs}
 \alias{plot_pred_obs}
-\title{plot_pred_obs}
+\title{Plots predicted versus observed values with some additional statistics.}
 \usage{
 plot_pred_obs(dataset)
 }
@@ -10,8 +10,8 @@ plot_pred_obs(dataset)
 \item{dataset}{with observed and predicted values from one or more models. The first column of these data frame MUST be named as observed.}
 }
 \value{
-a plot with predicted vs observed values, in addition to other statistical features.
+a plot with predicted vs observed values, in addition to another statistical features.
 }
 \description{
-plot_pred_obs
+Plots predicted versus observed values with some additional statistics.
 }

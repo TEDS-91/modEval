@@ -43,7 +43,7 @@ predicted <- data_template$`Full Model`
 
 observed <- data_template$observed
 
-model_eval(obs_values = observed , pred_values = predicted)
+model_eval(obs_values = observed, pred_values = predicted)
 
 ```
 

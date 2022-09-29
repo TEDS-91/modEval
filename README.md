@@ -34,11 +34,11 @@ predicted <- data_template$`Full Model`
 
 observed <- data_template$observed
 
-model_eval(obs_values = observed , pred_values = predicted)
+model_eval(obs_values = observed, pred_values = predicted)
 #> # A tibble: 1 x 11
-#>   Intercept Slope `R-squared` `Peason Correlati~ `Mean Bias`     MAE   MSE  RMSE
-#>       <dbl> <dbl>       <dbl>              <dbl>       <dbl>   <dbl> <dbl> <dbl>
-#> 1   0.00480  1.00       0.734              0.857   -0.000313 9.77e-6 1209.  34.8
+#>   Intercept Slope `Peason correlatio~ `R-squared`        MB      MAE   MSE  RMSE
+#>       <dbl> <dbl>               <dbl>       <dbl>     <dbl>    <dbl> <dbl> <dbl>
+#> 1   0.00480  1.00               0.857       0.734 -0.000313  9.77e-6 1209.  34.8
 #> # ... with 3 more variables: CCC <dbl>, CD <dbl>, ME <dbl>
 ```
 

@@ -1,10 +1,10 @@
 
-#' model_eval
+#' Model evaluation.
 #'
 #' @param obs_values observed values.
 #' @param pred_values predicted values.
 #'
-#' @return list with the main statistics for model evaluation and comparison.
+#' @return Data frame with the statistical metrics to perform model evaluation and comparison.
 #' @export
 
 model_eval <- function(obs_values, pred_values) {

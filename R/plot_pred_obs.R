@@ -1,9 +1,9 @@
 
-#' plot_pred_obs
+#' Plots predicted versus observed values with some additional statistics.
 #'
 #' @param dataset with observed and predicted values from one or more models. The first column of these data frame MUST be named as observed.
 #'
-#' @return a plot with predicted vs observed values, in addition to other statistical features.
+#' @return a plot with predicted vs observed values, in addition to another statistical features.
 #' @export
 plot_pred_obs <- function(dataset) {
 

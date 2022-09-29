@@ -2,7 +2,7 @@
 % Please edit documentation in R/model_eval.R
 \name{model_eval}
 \alias{model_eval}
-\title{model_eval}
+\title{Model evaluation.}
 \usage{
 model_eval(obs_values, pred_values)
 }
@@ -12,8 +12,8 @@ model_eval(obs_values, pred_values)
 \item{pred_values}{predicted values.}
 }
 \value{
-list with the main statistics for model evaluation and comparison.
+Data frame with the statistical metrics to perform model evaluation and comparison.
 }
 \description{
-model_eval
+Model evaluation.
 }
