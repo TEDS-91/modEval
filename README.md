@@ -35,10 +35,12 @@ predicted <- data_template$`Full Model`
 observed <- data_template$observed
 
 model_eval(obs_values = observed, pred_values = predicted)
-#> # A tibble: 1 x 11
-#>   Intercept Slope     r    r2        MB        MAE   MSE  RMSE   CCC    CD    ME
-#>       <dbl> <dbl> <dbl> <dbl>     <dbl>      <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#> 1   0.00480  1.00 0.857 0.734 -0.000313 0.00000977 1209.  34.8 0.847  1.36 0.734
+#> # A tibble: 1 x 13
+#>   Intercept `Intercept - p-~ Slope `Slope - p-valu~     r    r2       MB     MAE
+#>       <dbl>            <dbl> <dbl>            <dbl> <dbl> <dbl>    <dbl>   <dbl>
+#> 1   0.00480             1.00  1.00             1.00 0.857 0.734 -3.13e-4 9.77e-6
+#> # ... with 5 more variables: MSE <dbl>, RMSE <dbl>, CCC <dbl>, CD <dbl>,
+#> #   ME <dbl>
 ```
 
 # The “model_eval_ui()” function
