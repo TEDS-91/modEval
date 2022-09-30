@@ -2,6 +2,7 @@
 utils::globalVariables(
   c(
     "models",
+    "Models",
     "residuals",
     "observed",
     "predicted",

@@ -19,7 +19,7 @@ uploadServer <- function(id) {
 
       shiny::req(file)
 
-      shiny::validate(shiny::need(ext == "xlsx", "Please upload a XLSX file"))
+      shiny::validate(shiny::need(ext == "xlsx", "Dear user, please upload a .xlsx file!"))
 
       uploaded_data <- readxl::read_excel(file$datapath)
 

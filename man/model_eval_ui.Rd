@@ -7,7 +7,7 @@
 model_eval_ui()
 }
 \value{
-graphical interface where the user must upload a .XLSX file to perform
+graphical interface where the user must upload a .xlsx file to perform
 the model evaluation. There is no parameters for this function.
 }
 \description{

@@ -76,6 +76,12 @@ model_eval <- function(obs_values, pred_values) {
 
     slope_pvalue <- p_values$coefficients[8]
 
+    # Join F test for beta0 = 0 beta1 = 1
+
+    jointestF <- car::linearHypothesis(stats::lm(obs_values ~ pred_values), diag(2), c(0, 1))
+
+    pvalueF <- jointestF[2, 6]
+
     # Kobayashi and Salam (2000) - in progress...
 
     sb <- (mean_obs_values - mean_pred_values)^2
@@ -98,6 +104,7 @@ model_eval <- function(obs_values, pred_values) {
         "Intercept - p-value" = intercept_pvalue,
         "Slope"               = slope,
         "Slope - p-value"     = slope_pvalue,
+        "Joint F p-value"     = pvalueF,
         "r"                   = correlation,
         "r2"                  = r_squared,
         "MB"                  = mean_bias,

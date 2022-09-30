@@ -65,21 +65,23 @@ modelcomparisonsServer <- function(id, dataset) {
         purrr::map_df(~ as.data.frame(.x), .id = "Models") %>%
         tibble::as_tibble() %>%
         dplyr::mutate(dplyr::across(where(is.numeric), round, digits = 3)) %>%
-        dplyr::arrange(-CCC)
+        dplyr::arrange(-CCC) %>%
+        tidyr::pivot_longer(
+          cols = c(-Models),
+          names_to = "Metrics"
+        ) %>%
+        tidyr::pivot_wider(names_from = c(Models))
 
       # creating the datatable
       DT::datatable(
         model_eval_outcomes,
         extensions = c('Buttons', 'Scroller'),
         options = list(
-          dom         = 'Bfrtip',
-          pageLength  = 20,
-          scrollY     = TRUE,
-          scrollY     = TRUE,
-          scroller    = TRUE,
-          autoWidth   = TRUE,
-          columnDefs = list(list(width = '200px', targets = "_all")),
-          buttons     = c('copy', 'csv', 'excel'),
+          dom          = 'Bfrtip',
+          columnDefs   = list(list(className = 'dt-center', targets = 5)),
+          pageLength   = 20,
+          lengthMenu   = c(5, 10, 20, 40),
+          buttons      = c('copy', 'csv', 'excel'),
           initComplete = DT::JS(
             "function(settings, json) {",
             "$(this.api().table().header()).css({'background-color': '#16A085', 'color': '#FDFEFE'});",
