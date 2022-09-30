@@ -102,7 +102,6 @@ model_eval <- function(obs_values, pred_values) {
         "CCC"                 = ccc,
         "CD"                  = cd,
         "ME"                  = me,
-
         "MSE"                 = mse,
         "SB (%)"              = sb_p,
         "SDSD (%)"            = sdsd_p,
