@@ -72,7 +72,7 @@ model_eval <- function(obs_values, pred_values) {
 
     slope_pvalue <- p_values$coefficients[8]
 
-    # Kobayashi and Salam (2000)
+    # Kobayashi and Salam (2000) - in progress...
 
     sb <- (mean_obs_values - mean_pred_values)^2
 
@@ -80,6 +80,11 @@ model_eval <- function(obs_values, pred_values) {
 
     lcs <- 2 * sqrt(var_obs_values) * sqrt(var_pred_values) * (1 - correlation)
 
+    sb_p <- sb / (sb + sdsd + lcs) * 100
+
+    sdsd_p <- sdsd / (sb + sdsd + lcs) * 100
+
+    lcs_p <- lcs / (sb + sdsd + lcs) * 100
 
     return(
       tibble::tibble(
@@ -97,9 +102,9 @@ model_eval <- function(obs_values, pred_values) {
         "CD"                  = cd,
         "ME"                  = me,
 
-        "sb"                  = sb / (sb + sdsd + lcs) * 100,
-        "sdsd"                = sdsd / (sb + sdsd + lcs) * 100,
-        "lcs"                 = lcs / (sb + sdsd + lcs) * 100
+        "sb"                  = sb_p,
+        "sdsd"                = sdsd_p,
+        "lcs"                 = lcs_p
 
       )
     )
