@@ -98,15 +98,15 @@ model_eval <- function(obs_values, pred_values) {
         "r2"                  = r_squared,
         "MB"                  = mean_bias,
         "MAE"                 = mae,
-        "MSE"                 = mse,
         "RMSE"                = rmse,
         "CCC"                 = ccc,
         "CD"                  = cd,
         "ME"                  = me,
 
-        "sb"                  = sb_p,
-        "sdsd"                = sdsd_p,
-        "lcs"                 = lcs_p
+        "MSE"                 = mse,
+        "SB (%)"              = sb_p,
+        "SDSD (%)"            = sdsd_p,
+        "LCS (%)"             = lcs_p
 
       )
     )

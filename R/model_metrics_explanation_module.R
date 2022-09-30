@@ -14,10 +14,13 @@ model_explanationUI <- function(id) {
     shiny::tags$b("CCC:"),                                 "Concordance correlation coefficient.",
     shiny::tags$b("CD:"),                                  "Coefficient of model determination.",
     shiny::tags$b("ME:"),                                  "Modeling efficiency.",
-    shiny::tags$b("sb, sdsd, and lcs:"),                   "Decomposition of the MSE (still in progress..)."),
+
+    shiny::tags$b("SB (%), SDSD (%), and LCS (%):"),                   "Decomposition of the MSE according to",
+    shiny::tags$a(href = "https://www.sciencedirect.com/science/article/pii/S0308521X05002568", "Kobayashi and Salam (2000)"),
+    shiny::tags$b("[Comparing Simulated and Measured Values Using Mean Squared Deviation and its Components].")),
 
     # message with reference!
-    shiny::tags$p("All calculations for the metrics exposed in this application can be found in", shiny::tags$b("Tedeschi (2006)
+    shiny::tags$p("Most of calculations for the metrics exposed in this application can be found in", shiny::tags$b("Tedeschi (2006)
                   [Assessment of the adequacy of mathematical models]"), "by clicking ",
     shiny::tags$a(href = "https://www.sciencedirect.com/science/article/pii/S0308521X05002568", "here!"))
 
