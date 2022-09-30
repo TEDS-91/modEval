@@ -72,6 +72,15 @@ model_eval <- function(obs_values, pred_values) {
 
     slope_pvalue <- p_values$coefficients[8]
 
+    # Kobayashi and Salam (2000)
+
+    sb <- (mean_obs_values - mean_pred_values)^2
+
+    sdsd <- (sqrt(var_obs_values) - sqrt(var_pred_values))^2
+
+    lcs <- 2 * sqrt(var_obs_values) * sqrt(var_pred_values) * (1 - correlation)
+
+
     return(
       tibble::tibble(
         "Intercept"           = intercept,
@@ -86,7 +95,12 @@ model_eval <- function(obs_values, pred_values) {
         "RMSE"                = rmse,
         "CCC"                 = ccc,
         "CD"                  = cd,
-        "ME"                  = me
+        "ME"                  = me,
+
+        "sb"                  = sb / (sb + sdsd + lcs) * 100,
+        "sdsd"                = sdsd / (sb + sdsd + lcs) * 100,
+        "lcs"                 = lcs / (sb + sdsd + lcs) * 100
+
       )
     )
   }
