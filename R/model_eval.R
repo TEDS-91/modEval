@@ -47,6 +47,10 @@ model_eval <- function(obs_values, pred_values) {
     # Concordance correlation coefficient
     ccc <- (2 * stats::cov(obs_values, pred_values)) / ((mean_obs_values - mean_pred_values)^2 + var_obs_values + var_pred_values)
 
+    Cb <- 2 / ((sqrt(var_obs_values) / sqrt(var_pred_values)) + (1 / (sqrt(var_obs_values) / sqrt(var_pred_values))) + ((mean_obs_values - mean_pred_values) / sqrt(sqrt(var_obs_values) * sqrt(var_pred_values)) )^2)
+
+    p <- ccc / Cb
+
     # Coefficient of model determination
     cd <- sum((obs_values - mean_obs_values)^2) / sum((pred_values - mean_obs_values)^2)
 
@@ -100,6 +104,8 @@ model_eval <- function(obs_values, pred_values) {
         "MAE"                 = mae,
         "RMSE"                = rmse,
         "CCC"                 = ccc,
+        "Cb"                  = Cb,
+        "p"                   = p,
         "CD"                  = cd,
         "ME"                  = me,
         "MSE"                 = mse,

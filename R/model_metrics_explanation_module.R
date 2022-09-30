@@ -12,6 +12,8 @@ model_explanationUI <- function(id) {
     shiny::tags$b("MSE:"),                                 "Mean square error.",
     shiny::tags$b("RMSE:"),                                "Root mean square.",
     shiny::tags$b("CCC:"),                                 "Concordance correlation coefficient.",
+    shiny::tags$b("Cb:"),                                  "CCC Accuracy.",
+    shiny::tags$b("p:"),                                   "CCC Precision.",
     shiny::tags$b("CD:"),                                  "Coefficient of model determination.",
     shiny::tags$b("ME:"),                                  "Modeling efficiency.",
 
