@@ -80,6 +80,8 @@ model_eval <- function(obs_values, pred_values) {
 
     lcs <- 2 * sqrt(var_obs_values) * sqrt(var_pred_values) * (1 - correlation)
 
+    # proportion of each component
+
     sb_p <- sb / (sb + sdsd + lcs) * 100
 
     sdsd_p <- sdsd / (sb + sdsd + lcs) * 100

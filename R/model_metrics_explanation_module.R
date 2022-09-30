@@ -13,7 +13,8 @@ model_explanationUI <- function(id) {
     shiny::tags$b("RMSE:"),                                "Root mean square.",
     shiny::tags$b("CCC:"),                                 "Concordance correlation coefficient.",
     shiny::tags$b("CD:"),                                  "Coefficient of model determination.",
-    shiny::tags$b("ME:"),                                  "Modeling efficiency."),
+    shiny::tags$b("ME:"),                                  "Modeling efficiency.",
+    shiny::tags$b("sb, sdsd, and lcs:"),                   "Decomposition of the MSE (still in progress..)."),
 
     # message with reference!
     shiny::tags$p("All calculations for the metrics exposed in this application can be found in", shiny::tags$b("Tedeschi (2006)
