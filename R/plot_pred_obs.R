@@ -59,10 +59,7 @@ plot_pred_obs <- function(dataset) {
                       text            = ggplot2::element_text(size = 11),
                       legend.text     = ggplot2::element_text(size = 9))
 
-     # using plotly library
-     plotly::ggplotly(plot_p, height = 700, width = 1000) %>%
-        plotly::config(displayModeBar = F)  %>%
-        plotly::layout(legend = list(orientation = "h", x = 0.4, y = -0.2))
+     plot_p
 
   }
 }
