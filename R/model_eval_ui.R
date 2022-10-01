@@ -31,6 +31,8 @@ ui <- shiny::fluidPage(
 
           shiny::tabPanel("Predicted vs Observed Plots",
                           shiny::hr(),
+                          plotdownloadUI("downl_plot"),
+                          shiny::hr(),
                           predobsUI("pred_vs_obs_viz"))
       ), width = 9)
   )
@@ -50,8 +52,11 @@ server <- function(input, output) {
    # running the model comparisons module
    df_model_rank <- modelcomparisonsServer("model_comparisons", dataset = data_uploaded)
 
-   # running the predobs module
+   # running the plot predobs module
    predobsServer("pred_vs_obs_viz", dataset = data_uploaded)
+
+   # running the plot download module
+   plotdownloadServer("downl_plot", dataset = data_uploaded)
 
 }
 

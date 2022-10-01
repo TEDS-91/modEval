@@ -76,7 +76,7 @@ modelcomparisonsServer <- function(id, dataset) {
       DT::datatable(
         model_eval_outcomes,
         extensions = c('Buttons', 'Scroller'),
-        options = list(
+        options    = list(
           dom          = 'Bfrtip',
           columnDefs   = list(list(className = 'dt-center', targets = 5)),
           pageLength   = 20,

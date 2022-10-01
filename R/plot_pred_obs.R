@@ -49,12 +49,12 @@ plot_pred_obs <- function(dataset) {
                                               "Residuals",
                                               "Zero Line Residuals",
                                               "Regression Line for Residuals"),
-                                   values = c("Observed"        = "grey",
+                                   values = c("Observed"                          = "grey",
                                               "Regression Line (a = 0 and b = 0)" = "blue",
-                                              "Fitted"          = "black",
-                                              "Residuals"       = "orange",
-                                              "Zero Line Residuals" = "black",
-                                              "Regression Line for Residuals" = "blue")) +
+                                              "Fitted"                            = "black",
+                                              "Residuals"                         = "orange",
+                                              "Zero Line Residuals"               = "black",
+                                              "Regression Line for Residuals"     = "blue")) +
        ggplot2::theme(legend.position = "bottom",
                       text            = ggplot2::element_text(size = 11),
                       legend.text     = ggplot2::element_text(size = 9))

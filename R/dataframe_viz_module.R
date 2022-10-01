@@ -17,9 +17,9 @@ dataframevizServer <- function(id, dataset) {
         dplyr::mutate(dplyr::across(where(is.numeric), round, digits = 3)) %>%
         DT::datatable(
         options = list(
-            columnDefs = list(list(className = 'dt-center', targets = 5)),
-            pageLength = 20,
-            lengthMenu = c(5, 10, 20, 40),
+            columnDefs   = list(list(className = 'dt-center', targets = 5)),
+            pageLength   = 20,
+            lengthMenu   = c(5, 10, 20, 40),
             initComplete = DT::JS(
               "function(settings, json) {",
               "$(this.api().table().header()).css({'background-color': '#16A085', 'color': '#FDFEFE'});",
