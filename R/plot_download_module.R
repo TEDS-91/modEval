@@ -18,7 +18,7 @@ plotdownloadServer <- function(id, dataset) {
 
     output$downloadPlot <- shiny::downloadHandler(
 
-      filename = function(){paste("Plot_Pred_vs_Obs", '.png', sep = '')},
+      filename = function(){paste("plot_pred_vs_obs", '.png', sep = '')},
 
       content = function(plot_d){
 
