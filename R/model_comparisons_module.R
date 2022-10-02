@@ -88,18 +88,17 @@ modelcomparisonsServer <- function(id, dataset) {
       # creating the datatable
       DT::datatable(
         model_eval_outcomes,
-        extensions = c('Buttons', 'Scroller'),
-        options    = list(
-          dom          = 'Bfrtip',
-          columnDefs   = list(list(className = 'dt-center', targets = 5)),
-          pageLength   = 20,
-          lengthMenu   = c(5, 10, 20, 40),
-          buttons      = c('copy', 'csv', 'excel'),
-          initComplete = DT::JS(
-            "function(settings, json) {",
-            "$(this.api().table().header()).css({'background-color': '#16A085', 'color': '#FDFEFE'});",
-            "}")
-        )
+         extensions = c('Buttons', 'Scroller'),
+         options    = list(
+           dom          = 'Bfrtip',
+           pageLength   = 20,
+           lengthMenu   = c(5, 10, 20, 40),
+           buttons      = c('copy', 'csv', 'excel'),
+           initComplete = DT::JS(
+             "function(settings, json) {",
+             "$(this.api().table().header()).css({'background-color': '#16A085', 'color': '#FDFEFE'});",
+             "}")
+         )
       )
     })
   })
