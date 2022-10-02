@@ -1,5 +1,8 @@
 
-#' Model evaluation.
+#' Performs model evaluation.
+#'
+#' @description
+#' Performs model evaluation by calculating several metrics available in the literature.
 #'
 #' @param obs_values observed values.
 #' @param pred_values predicted values.

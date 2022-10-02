@@ -11,5 +11,5 @@ graphical interface where the user must upload a .xlsx file to perform
 the model evaluation. There is no parameters for this function.
 }
 \description{
-Graphical Interface for Model Evaluation
+Offers to the user a graphical interface to perform model evaluation.
 }

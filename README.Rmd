@@ -38,7 +38,7 @@ devtools::install_github("TEDS-91/modEval")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows how to run the __model_eval()__ function:
 
 ```{r}
 
@@ -53,8 +53,6 @@ observed <- data_template$observed
 model_eval(obs_values = observed, pred_values = predicted)
 
 ```
-
-
 
 # The "model_eval_ui()" function
 

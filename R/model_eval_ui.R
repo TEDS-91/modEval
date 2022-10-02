@@ -1,6 +1,9 @@
 
 #' Graphical Interface for Model Evaluation
 #'
+#' @description
+#' Offers to the user a graphical interface to perform model evaluation.
+#'
 #' @return graphical interface where the user must upload a .xlsx file to perform
 #' the model evaluation. There is no parameters for this function.
 #' @export

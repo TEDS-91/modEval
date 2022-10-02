@@ -2,7 +2,7 @@
 % Please edit documentation in R/model_eval.R
 \name{model_eval}
 \alias{model_eval}
-\title{Model evaluation.}
+\title{Performs model evaluation.}
 \usage{
 model_eval(obs_values, pred_values)
 }
@@ -15,5 +15,5 @@ model_eval(obs_values, pred_values)
 Data frame with the statistical metrics to perform model evaluation and comparison.
 }
 \description{
-Model evaluation.
+Performs model evaluation by calculating several metrics available in the literature.
 }
