@@ -4,6 +4,9 @@ modelcomparisonsUI <- function(id) {
 
     DT::dataTableOutput(shiny::NS(id, "model_comparisons")),
 
+    shiny::conditionalPanel(condition = "$('html').hasClass('shiny-busy')",
+                            shiny::tags$div("Calculating... Please hold on!", id = "loadmessage")),
+
     shiny::br(),
 
     shiny::uiOutput(shiny::NS(id, "model_description"))

@@ -2,7 +2,10 @@
 predobsUI <- function(id) {
   shiny::tagList(
 
-  plotly::plotlyOutput(shiny::NS(id, "pred_vs_obs_viz"))
+  plotly::plotlyOutput(shiny::NS(id, "pred_vs_obs_viz")),
+
+  shiny::conditionalPanel(condition = "$('html').hasClass('shiny-busy')",
+                          shiny::tags$div("Loading... Please hold on!", id = "loadmessage"))
 
   )
 }
