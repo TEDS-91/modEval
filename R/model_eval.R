@@ -36,13 +36,11 @@ model_eval <- function(obs_values, pred_values) {
     var_pred_values <- stats::var(pred_values, na.rm = TRUE)
 
     # mean t test
-
     t_test <- stats::t.test(obs_values, pred_values)
 
     pvalue_t <- t_test$p.value
 
     # variance test
-
     var_test <- stats::var.test(obs_values, pred_values)
 
     pvalue_var <- var_test$p.value
@@ -54,26 +52,26 @@ model_eval <- function(obs_values, pred_values) {
 
     correlation_pvalue <- correlation$p.value[[1]]
 
-    # Mean bias
+    # mean bias
     mean_bias <- mean_obs_values - mean_pred_values
 
-    # Mean absolute error
+    # mean absolute error
     mae <- sum(abs(mean_obs_values - mean_pred_values)) / length(obs_values)
 
-    # Mean absolute error
+    # mean absolute error
     mse <- sum((obs_values - pred_values)^2) / length(obs_values)
 
-    # Root mean square
+    # root mean square
     rmse <- sqrt(sum((obs_values - pred_values)^2) / length(obs_values))
 
-    # Concordance correlation coefficient
+    # concordance correlation coefficient
     ccc <- (2 * stats::cov(obs_values, pred_values)) / ((mean_obs_values - mean_pred_values)^2 + var_obs_values + var_pred_values)
 
     Cb <- 2 / ((sqrt(var_obs_values) / sqrt(var_pred_values)) + (1 / (sqrt(var_obs_values) / sqrt(var_pred_values))) + ((mean_obs_values - mean_pred_values) / sqrt(sqrt(var_obs_values) * sqrt(var_pred_values)) )^2)
 
     p <- ccc / Cb
 
-    # Coefficient of model determination
+    # coefficient of model determination
     cd <- sum((obs_values - mean_obs_values)^2) / sum((pred_values - mean_obs_values)^2)
 
     # modeling efficiency
