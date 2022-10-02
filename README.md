@@ -7,8 +7,10 @@
 <!-- badges: end -->
 
 The goal of **modEval** package is to allow users to perform statistical
-model evaluation and comparison. Package developed as part of the
-requirements of the package development course offered by
+model evaluation and comparisons easily and quickly.
+
+The package is being developed as part of the requirements of the
+package development course offered by
 [**Curso-R**](https://curso-r.com/).
 
 ## Installation
@@ -35,12 +37,13 @@ predicted <- data_template$`Full Model`
 observed <- data_template$observed
 
 model_eval(obs_values = observed, pred_values = predicted)
-#> # A tibble: 1 x 16
-#>   Intercept `Intercept - p-~ Slope `Slope - p-valu~     r    r2       MB     MAE
-#>       <dbl>            <dbl> <dbl>            <dbl> <dbl> <dbl>    <dbl>   <dbl>
-#> 1   0.00480             1.00  1.00             1.00 0.857 0.734 -3.13e-4 9.77e-6
-#> # ... with 8 more variables: RMSE <dbl>, CCC <dbl>, CD <dbl>, ME <dbl>,
-#> #   MSE <dbl>, SB (%) <dbl>, SDSD (%) <dbl>, LCS (%) <dbl>
+#> # A tibble: 1 x 20
+#>   Intercept `Intercept - p-value` Slope `Slope - p-value` `Joint F p-valu~     r
+#>       <dbl>                 <dbl> <dbl>             <dbl>            <dbl> <dbl>
+#> 1   0.00480                  1.00  1.00              1.00             1.00 0.857
+#> # ... with 14 more variables: r p-value <dbl>, r2 <dbl>, CCC <dbl>, Cb <dbl>,
+#> #   p <dbl>, MB <dbl>, MAE <dbl>, RMSE <dbl>, MSE <dbl>, SB (%) <dbl>,
+#> #   SDSD (%) <dbl>, LCS (%) <dbl>, CD <dbl>, ME <dbl>
 ```
 
 # The “model_eval_ui()” function

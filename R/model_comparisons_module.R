@@ -6,7 +6,7 @@ modelcomparisonsUI <- function(id) {
 
     shiny::br(),
 
-    model_explanationUI(shiny::NS(id, "model_metrics_explanation"))
+    shiny::uiOutput(shiny::NS(id, "model_description"))
 
   )
 }
@@ -14,6 +14,19 @@ modelcomparisonsUI <- function(id) {
 modelcomparisonsServer <- function(id, dataset) {
   moduleServer(id, function(input, output, session) {
 
+    # model description
+    output$model_description <- shiny::renderUI({
+
+      shiny::validate(
+        shiny::need(dataset(), " "
+        )
+      )
+
+      model_explanationUI(shiny::NS(id, "model_metrics_explanation"))
+
+    })
+
+    # model comparisons table
     output$model_comparisons <- DT::renderDataTable({
 
       # renaming the first column

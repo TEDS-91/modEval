@@ -8,7 +8,7 @@ model_eval_ui <- function() {
 
 ui <- shiny::fluidPage(
   shinythemes::shinytheme("flatly"),
-    shiny::titlePanel(shiny::h2(shiny::strong("Model Evaluation Tool", style = "color: #007582"))),
+    shiny::titlePanel(shiny::h2(shiny::strong("Model Evaluation (modEval) Package", style = "color: #007582"))),
       shiny::sidebarLayout(
         shiny::sidebarPanel(
 

@@ -23,6 +23,7 @@ model_eval <- function(obs_values, pred_values) {
 
   } else {
 
+    # general statistics
     mean_obs_values <- mean(obs_values, na.rm = TRUE)
 
     mean_pred_values <- mean(pred_values, na.rm = TRUE)
@@ -31,9 +32,15 @@ model_eval <- function(obs_values, pred_values) {
 
     var_pred_values <- stats::var(pred_values, na.rm = TRUE)
 
-    mean_bias <- mean_obs_values - mean_pred_values
+    # correlation analysis
+    correlation <- stats::cor.test(obs_values, pred_values)
 
-    correlation <- stats::cor(obs_values, pred_values)
+    correlation_estimate <- correlation$estimate[[1]]
+
+    correlation_pvalue <- correlation$p.value[[1]]
+
+    # Mean bias
+    mean_bias <- mean_obs_values - mean_pred_values
 
     # Mean absolute error
     mae <- sum(abs(mean_obs_values - mean_pred_values)) / length(obs_values)
@@ -60,15 +67,15 @@ model_eval <- function(obs_values, pred_values) {
     # linear model
     linear_reg <- stats::lm(obs_values ~ pred_values)
 
-    # getting the coefficients
+    # calculating the coefficients
     intercept <- linear_reg$coefficients[[1]]
 
     slope <- linear_reg$coefficients[[2]]
 
-    # getting r-squared
+    # calculating r2
     r_squared <- stats::cor(obs_values, pred_values)^2
 
-    # calculating p-values (a = 0, b = 1)
+    # calculating p-values (a = 0, b = 1) with t-test
     p_values <- summary(stats::lm(obs_values ~ 1 + pred_values + offset(pred_values)))
 
     # getting p-values
@@ -76,27 +83,26 @@ model_eval <- function(obs_values, pred_values) {
 
     slope_pvalue <- p_values$coefficients[8]
 
-    # Join F test for beta0 = 0 beta1 = 1
-
+    # Joint F test for beta0 = 0 beta1 = 1
     jointestF <- car::linearHypothesis(stats::lm(obs_values ~ pred_values), diag(2), c(0, 1))
 
     pvalueF <- jointestF[2, 6]
 
-    # Kobayashi and Salam (2000) - in progress...
-
+    # Kobayashi and Salam (2000)
     sb <- (mean_obs_values - mean_pred_values)^2
 
     sdsd <- (sqrt(var_obs_values) - sqrt(var_pred_values))^2
 
-    lcs <- 2 * sqrt(var_obs_values) * sqrt(var_pred_values) * (1 - correlation)
+    lcs <- 2 * sqrt(var_obs_values) * sqrt(var_pred_values) * (1 - correlation_estimate)
 
     # proportion of each component
-
     sb_p <- sb / (sb + sdsd + lcs) * 100
 
     sdsd_p <- sdsd / (sb + sdsd + lcs) * 100
 
     lcs_p <- lcs / (sb + sdsd + lcs) * 100
+
+    # model_eval outputs
 
     return(
       tibble::tibble(
@@ -105,20 +111,21 @@ model_eval <- function(obs_values, pred_values) {
         "Slope"               = slope,
         "Slope - p-value"     = slope_pvalue,
         "Joint F p-value"     = pvalueF,
-        "r"                   = correlation,
+        "r"                   = correlation_estimate,
+        "r p-value"           = correlation_pvalue,
         "r2"                  = r_squared,
-        "MB"                  = mean_bias,
-        "MAE"                 = mae,
-        "RMSE"                = rmse,
         "CCC"                 = ccc,
         "Cb"                  = Cb,
         "p"                   = p,
-        "CD"                  = cd,
-        "ME"                  = me,
+        "MB"                  = mean_bias,
+        "MAE"                 = mae,
+        "RMSE"                = rmse,
         "MSE"                 = mse,
         "SB (%)"              = sb_p,
         "SDSD (%)"            = sdsd_p,
-        "LCS (%)"             = lcs_p
+        "LCS (%)"             = lcs_p,
+        "CD"                  = cd,
+        "ME"                  = me
 
       )
     )

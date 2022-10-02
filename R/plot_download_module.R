@@ -1,14 +1,26 @@
 plotdownloadUI <- function(id) {
   shiny::tagList(
 
-    shiny::downloadButton(shiny::NS(id, 'downloadPlot'), 'Download plot',
-                          style = "color: #fff; background-color: #007582; border-color: #007582")
+    shiny::uiOutput(shiny::NS(id, "plot_download_button"))
 
   )
 }
 
 plotdownloadServer <- function(id, dataset) {
   moduleServer(id, function(input, output, session) {
+
+    # plot download button
+    output$plot_download_button <- shiny::renderUI({
+
+      shiny::validate(
+        shiny::need(dataset(), " "
+        )
+      )
+
+      shiny::downloadButton(shiny::NS(id, 'downloadPlot'), 'Download plot',
+                            style = "color: #fff; background-color: #007582; border-color: #007582")
+
+    })
 
     plot_downl <- shiny::reactive({
 
@@ -18,7 +30,9 @@ plotdownloadServer <- function(id, dataset) {
 
     output$downloadPlot <- shiny::downloadHandler(
 
-      filename = function(){paste("plot_pred_vs_obs", '.png', sep = '')},
+      filename = function(){
+        paste("plot_pred_vs_obs", '.png', sep = '')
+        },
 
       content = function(plot_d){
 
