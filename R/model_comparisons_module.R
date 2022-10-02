@@ -94,8 +94,8 @@ modelcomparisonsServer <- function(id, dataset) {
          extensions = c('Buttons', 'Scroller'),
          options    = list(
            dom          = 'Bfrtip',
-           pageLength   = 20,
-           lengthMenu   = c(5, 10, 20, 40),
+           pageLength   = 30,
+           lengthMenu   = c(10, 20, 30, 40),
            buttons      = c('copy', 'csv', 'excel'),
            initComplete = DT::JS(
              "function(settings, json) {",

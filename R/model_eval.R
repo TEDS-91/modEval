@@ -32,6 +32,18 @@ model_eval <- function(obs_values, pred_values) {
 
     var_pred_values <- stats::var(pred_values, na.rm = TRUE)
 
+    # mean t test
+
+    t_test <- stats::t.test(obs_values, pred_values)
+
+    pvalue_t <- t_test$p.value
+
+    # variance test
+
+    var_test <- stats::var.test(obs_values, pred_values)
+
+    pvalue_var <- var_test$p.value
+
     # correlation analysis
     correlation <- stats::cor.test(obs_values, pred_values)
 
@@ -61,7 +73,7 @@ model_eval <- function(obs_values, pred_values) {
     # Coefficient of model determination
     cd <- sum((obs_values - mean_obs_values)^2) / sum((pred_values - mean_obs_values)^2)
 
-    # Modeling efficiency
+    # modeling efficiency
     me <- 1 - sum((obs_values - pred_values)^2) / sum((obs_values - mean_obs_values)^2)
 
     # linear model
@@ -83,7 +95,7 @@ model_eval <- function(obs_values, pred_values) {
 
     slope_pvalue <- p_values$coefficients[8]
 
-    # Joint F test for beta0 = 0 beta1 = 1
+    # joint F test for beta0 = 0 beta1 = 1
     jointestF <- car::linearHypothesis(stats::lm(obs_values ~ pred_values), diag(2), c(0, 1))
 
     pvalueF <- jointestF[2, 6]
@@ -102,30 +114,52 @@ model_eval <- function(obs_values, pred_values) {
 
     lcs_p <- lcs / (sb + sdsd + lcs) * 100
 
+    # MSE decomposition according to Bibby and Toutenburg (1977)
+    overall_bias_comp <- (mean_obs_values - mean_pred_values)^2
+
+    reg_dev_comp <- (sqrt(var_pred_values) - correlation_estimate * sqrt(var_obs_values))^2
+
+    # function to calculate variance with n instead of n-1 denominator
+    pop_var <- function(x) stats::var(x) * (length(x) - 1) / length(x)
+
+    rand_comp <- (1 - r_squared) * pop_var(obs_values)
+
+    # proportion of each component
+    overall_bias_prop <- overall_bias_comp / (overall_bias_comp + reg_dev_comp + rand_comp) * 100
+
+    reg_dev_prop <- reg_dev_comp / (overall_bias_comp + reg_dev_comp + rand_comp) * 100
+
+    rand_prop <- rand_comp / (overall_bias_comp + reg_dev_comp + rand_comp) * 100
+
     # model_eval outputs
 
     return(
       tibble::tibble(
-        "Intercept"           = intercept,
-        "Intercept - p-value" = intercept_pvalue,
-        "Slope"               = slope,
-        "Slope - p-value"     = slope_pvalue,
-        "Joint F p-value"     = pvalueF,
-        "r"                   = correlation_estimate,
-        "r p-value"           = correlation_pvalue,
-        "r2"                  = r_squared,
-        "CCC"                 = ccc,
-        "Cb"                  = Cb,
-        "p"                   = p,
-        "MB"                  = mean_bias,
-        "MAE"                 = mae,
-        "RMSE"                = rmse,
-        "MSE"                 = mse,
-        "SB (%)"              = sb_p,
-        "SDSD (%)"            = sdsd_p,
-        "LCS (%)"             = lcs_p,
-        "CD"                  = cd,
-        "ME"                  = me
+        "P-value t test"                = pvalue_t,
+        "P-value variance homog."       = pvalue_var,
+        "Intercept"                     = intercept,
+        "Intercept - p-value"           = intercept_pvalue,
+        "Slope"                         = slope,
+        "Slope - p-value"               = slope_pvalue,
+        "Joint F p-value"               = pvalueF,
+        "r"                             = correlation_estimate,
+        "r p-value"                     = correlation_pvalue,
+        "r2"                            = r_squared,
+        "CCC"                           = ccc,
+        "Cb"                            = Cb,
+        "p"                             = p,
+        "MB"                            = mean_bias,
+        "MAE"                           = mae,
+        "RMSE"                          = rmse,
+        "MSE"                           = mse,
+        "SB (%)"                        = sb_p,
+        "SDSD (%)"                      = sdsd_p,
+        "LCS (%)"                       = lcs_p,
+        "Bias (%)"                      = overall_bias_prop,
+        "Dev. of the regression  (%)"   = reg_dev_prop,
+        "Random variation  (%)"         = rand_prop,
+        "CD"                            = cd,
+        "ME"                            = me
 
       )
     )
