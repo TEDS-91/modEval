@@ -57,3 +57,7 @@ model_eval(obs_values = observed, pred_values = predicted)
 # The "model_eval_ui()" function
 
 If you run __model_eval_ui()__ a graphical user interface will pop up on your screen. It is a shiny application where you are able to download a template __.xlsx__ file, fill it up with your own data and upload the __.xlsx__ to populate the app. 
+
+### App screen
+
+<img src="man/figures/app_screen.png" align ="center" />
