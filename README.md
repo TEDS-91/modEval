@@ -27,7 +27,8 @@ devtools::install_github("TEDS-91/modEval")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows how to run the **model_eval()**
+function:
 
 ``` r
 library(modEval)
