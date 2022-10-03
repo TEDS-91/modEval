@@ -21,7 +21,7 @@ dataframevizServer <- function(id, dataset) {
             lengthMenu   = c(5, 10, 20, 40),
             initComplete = DT::JS(
               "function(settings, json) {",
-              "$(this.api().table().header()).css({'background-color': '#16A085', 'color': '#FDFEFE'});",
+              "$(this.api().table().header()).css({'background-color': '#004E63', 'color': '#FDFEFE'});",
               "}"
           )
         )

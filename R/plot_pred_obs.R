@@ -37,24 +37,24 @@ plot_pred_obs <- function(dataset) {
                             se = FALSE, size = 1) +
        ggplot2::geom_point(ggplot2::aes(x = predicted, y = residuals, color = "Residuals")) +
        ggplot2::geom_abline(slope = 0, intercept = 0, color = "black", linetype = "dashed") +
-         ggplot2::geom_smooth(ggplot2::aes(x = predicted, y = residuals, color = "Regression Line for Residuals"), method = 'lm',
+         ggplot2::geom_smooth(ggplot2::aes(x = predicted, y = residuals, color = "Regression line for residuals"), method = 'lm',
                               se = FALSE, size = 1) +
        ggplot2::facet_wrap(~ models) +
        ggplot2::xlab("Predicted Values") +
        ggplot2::ylab("Observed Values") +
        ggplot2::scale_color_manual(name   = " ",
                                    breaks = c("Observed",
-                                              "Regression Line (a = 0 and b = 1)",
+                                              "Regression line",
                                               "Fitted",
                                               "Residuals",
                                               "Zero Line Residuals",
-                                              "Regression Line for Residuals"),
+                                              "Regression line for residuals"),
                                    values = c("Observed"                          = "grey",
-                                              "Regression Line (a = 0 and b = 0)" = "blue",
+                                              "Regression line"                   = "blue",
                                               "Fitted"                            = "black",
                                               "Residuals"                         = "orange",
-                                              "Zero Line Residuals"               = "black",
-                                              "Regression Line for Residuals"     = "blue")) +
+                                              "Zero line residuals"               = "black",
+                                              "Regression line for residuals"     = "blue")) +
        ggplot2::theme(legend.position = "bottom",
                       text            = ggplot2::element_text(size = 11),
                       legend.text     = ggplot2::element_text(size = 9))

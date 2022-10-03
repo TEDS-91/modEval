@@ -3,7 +3,7 @@ datatemplateUI <- function(id) {
   shiny::tagList(
 
     shiny::downloadButton(shiny::NS(id, "downloadBtn"), " Download .xlsx template!",
-                          style = "color: #fff; background-color: #007582; border-color: #007582")
+                          style = "color: #fff; background-color: #004E63; border-color: #004E63")
 
   )
 }

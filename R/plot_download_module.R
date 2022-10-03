@@ -18,7 +18,7 @@ plotdownloadServer <- function(id, dataset) {
       )
 
       shiny::downloadButton(shiny::NS(id, 'downloadPlot'), 'Download plot',
-                            style = "color: #fff; background-color: #007582; border-color: #007582")
+                            style = "color: #fff; background-color: #004E63; border-color: #004E63")
 
     })
 
