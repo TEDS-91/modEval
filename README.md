@@ -58,6 +58,16 @@ your screen. It is a shiny application where you are able to download a
 template **.xlsx** file, fill it up with your own data and upload the
 **.xlsx** to populate the app.
 
+# App architecture (diagram)
+
+The diagram below shows the app architecture from the
+**model_eval_ui()** function.
+
+<img src="man/figures/model_eval_ui_diagram.png" align ="center" />
+
 ### App screen
+
+Below is the screen that pops up when the user runs the
+**model_eval_ui()** function.
 
 <img src="man/figures/app_screen.png" align ="center" />
