@@ -23,6 +23,8 @@ knitr::opts_chunk$set(
 
 The goal of __modEval__ package is to allow users to perform statistical model evaluation and comparisons easily and quickly.  
 
+The key selling point of this package is the fact that the user needs very little coding, and is able to use a graphical interface that will make his life easier by running __model_eval_ui()__. The user will be able to upload his/her data and calculate key adjustment model metrics, visualize the data in the form of scatter plots and download them.
+
 The package is being developed as part of the requirements of the package development course offered by [__Curso-R__](https://curso-r.com/).
 
 ## Installation
