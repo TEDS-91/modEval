@@ -46,15 +46,17 @@ predicted <- data_template$`Full Model`
 observed <- data_template$observed
 
 model_eval(obs_values = observed, pred_values = predicted)
-#> # A tibble: 1 x 25
-#>   `P-value t test` `P-value variance homog~ Intercept `Intercept - p-valu~ Slope
-#>              <dbl>                    <dbl>     <dbl>                <dbl> <dbl>
-#> 1             1.00                    0.395   0.00480                 1.00  1.00
-#> # ... with 20 more variables: Slope - p-value <dbl>, Joint F p-value <dbl>,
-#> #   r <dbl>, r p-value <dbl>, r2 <dbl>, CCC <dbl>, Cb <dbl>, p <dbl>, MB <dbl>,
-#> #   MAE <dbl>, RMSE <dbl>, MSE <dbl>, SB (%) <dbl>, SDSD (%) <dbl>,
-#> #   LCS (%) <dbl>, Bias (%) <dbl>, Dev. of the regression  (%) <dbl>,
-#> #   Random variation  (%) <dbl>, CD <dbl>, ME <dbl>
+#> # A tibble: 1 × 25
+#>   P-value t…¹ P-val…² Inter…³ Inter…⁴ Slope Slope…⁵ Joint…⁶     r r p-va…⁷    r2
+#>         <dbl>   <dbl>   <dbl>   <dbl> <dbl>   <dbl>   <dbl> <dbl>    <dbl> <dbl>
+#> 1        1.00   0.395 0.00480    1.00  1.00    1.00    1.00 0.857 3.83e-10 0.734
+#> # … with 15 more variables: CCC <dbl>, Cb <dbl>, p <dbl>, MB <dbl>, MAE <dbl>,
+#> #   RMSE <dbl>, MSE <dbl>, `SB (%)` <dbl>, `SDSD (%)` <dbl>, `LCS (%)` <dbl>,
+#> #   `Bias (%)` <dbl>, `Dev. of the regression  (%)` <dbl>,
+#> #   `Random variation  (%)` <dbl>, CD <dbl>, ME <dbl>, and abbreviated variable
+#> #   names ¹​`P-value t test`, ²​`P-value variance homog.`, ³​Intercept,
+#> #   ⁴​`Intercept - p-value`, ⁵​`Slope - p-value`, ⁶​`Joint F p-value`,
+#> #   ⁷​`r p-value`
 ```
 
 # The “model_eval_ui()” function
