@@ -1,18 +1,11 @@
-test_that("plot_pred_obs works", {
-
-  # Hope this works
-
-  # checking type of output (class)
-  expect_equal(is.data.frame(model_eval(obs_values = data_template$observed, pred_values = data_template$`Reduced Model 1`)), TRUE)
+test_that("model_eval works", {
 
   # Hope this does not work
-  # checking vectors with different lengths
-  expect_error(model_eval(obs_values = rnorm(10), pred_values = rnorm(9)))
 
-  # checking vectors with strings
-  expect_error(model_eval(obs_values = rnorm(10), pred_values = c("a", rnorm(9))))
+  # checking for the type of output (class)
+  expect_error(plot_pred_obs(matrix(2, 3)))
 
-  # checking vectors with NA
-  expect_error(model_eval(obs_values = rnorm(10), pred_values = c(NA, rnorm(9))))
+  # checking columns with strings
+  expect_error(plot_pred_obs(data.frame(observed = c("a", 2), predicted = c(1, 2))))
 
 })
